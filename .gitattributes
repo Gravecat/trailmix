@@ -6,3 +6,7 @@
 *.hpp text linguist-language=C++
 *.md text
 **/CMakeLists.txt text linguist-language=CMake
+
+src/3rdparty/** linguist-vendored
+src/3rdparty/rapidyaml/CMakeLists.txt -linguist-vendored
+src/3rdparty/rapidyaml/rapidyaml.cpp -linguist-vendored
