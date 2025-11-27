@@ -32,6 +32,7 @@ set(TRAILMIX_CPPS
   src/trailmix/file/filereader.cpp
   src/trailmix/file/filewriter.cpp
   src/trailmix/file/fileutils.cpp
+  src/trailmix/math/mathutils.cpp
   src/trailmix/sys/binpath.cpp
   src/trailmix/text/stringutils.cpp
   $<$<BOOL:${TRAILMIX_ALL_EXTRAS}>:src/trailmix/internal/test-headers.cpp>
