@@ -1,4 +1,4 @@
-// util/text/hash.cp -- Simple wrapper code to provide much simpler access to MurmurHash3, for hashing simple strings into integers.
+// text/hash.cpp -- Simple wrapper code to provide much simpler access to MurmurHash3, for hashing simple strings into integers.
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>

@@ -1,4 +1,4 @@
-// util/file/yaml.cpp -- Helper functions to make using Rapid YAML easier.
+// file/yaml.cpp -- Helper functions to make using Rapid YAML easier.
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>

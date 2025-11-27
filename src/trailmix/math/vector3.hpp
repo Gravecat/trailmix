@@ -1,4 +1,4 @@
-// util/math/vector3.hpp -- The Vector3 struct provides a simple way of storing and sharing 3D coordinates.
+// math/vector3.hpp -- The Vector3 struct provides a simple way of storing and sharing 3D coordinates.
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
