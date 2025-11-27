@@ -1,0 +1,21 @@
+# Pretty basic stuff, just blocking temporary files, binary objects, and other
+# junk that may show up in the folder but doesn't belong in the repo.
+
+# Unwanted/temporary files.
+~$*
+*.lnk
+*.tmp
+*:Zone.Identifier
+.vscode/
+
+# Binaries created by the build process, or libraries used in the build.
+*.a
+*.dll
+*.exe
+*.o
+*.so
+
+# Build folders.
+build/
+build-*/
+*-build/

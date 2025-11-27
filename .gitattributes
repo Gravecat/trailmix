@@ -1,0 +1,8 @@
+# This is all pretty standard stuff, mostly telling GitHub Linguist what file types are, as well as excluding any third-party code from
+# counting towards the stats. A lot of this stuff is auto-detected by GitHub Linguist, but it's not perfect. Just gonna specify a bunch
+# of them to make absolutely sure it knows what's what.
+
+*.cpp text linguist-language=C++
+*.hpp text linguist-language=C++
+*.md text
+**/CMakeLists.txt text linguist-language=CMake
