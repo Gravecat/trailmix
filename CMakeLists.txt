@@ -12,7 +12,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Source files.
 set(TRAILMIX_CPPS
-  src/trailmix/sys/binpath.cpp
+  src/sys/binpath.cpp
 )
 
 # Third-party code being built as separate object files.
@@ -86,7 +86,7 @@ target_link_libraries(trailmix PRIVATE
 )
 
 # Include directories.
-target_include_directories(trailmix PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+target_include_directories(trailmix PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # Compiler-specific flags.
 option(WARNINGS_AS_ERRORS "Turn warnings into errors" OFF)

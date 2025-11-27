@@ -1,4 +1,4 @@
-// util/file/binpath.cpp -- Some very nasty platform-specific code for determining the path of the binary file at runtime.
+// sys/binpath.cpp -- Some very nasty platform-specific code for determining the path of the binary file at runtime.
 // Based on and modified from code I found on StackOverflow: https://stackoverflow.com/questions/1528298/get-path-of-executable
 
 // SPDX-FileType: SOURCE
