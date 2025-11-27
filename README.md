@@ -1,4 +1,5 @@
-# Trailmix C++ Utility Library
+# Trailmix C++ Utility Library [![Static Badge](https://img.shields.io/badge/stage-alpha-red)](https://github.com/Gravecat/trailmix) [![GitHub License](https://img.shields.io/github/license/Gravecat/trailmix)](https://github.com/Gravecat/trailmix/blob/main/LICENSE) [![GitHub last commit](https://img.shields.io/github/last-commit/Gravecat/trailmix)](https://github.com/Gravecat/trailmix/commits/main/) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Gravecat/trailmix)](https://github.com/Gravecat/trailmix)
+
 
 The Trailmix library is a collection of mismatched, odd bits and pieces of utility code that I've used a lot in my last few projects. It primarily consists of string manipulation, math-related functions, some file-handling utility, and other bits and pieces.
 
@@ -7,7 +8,7 @@ It's primarily intended for use in my own personal projects, but I'm putting it 
 
 ## MIT License
 
-Copyright (c) 2025 Raine "Gravecat" Simmons \<gc@gravecat.com\>.
+Copyright (c) 2025 Raine "Gravecat" Simmons \<gc@gravecat.com\>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
