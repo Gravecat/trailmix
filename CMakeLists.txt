@@ -6,9 +6,13 @@
 
 cmake_minimum_required(VERSION 3.13)
 project(trailmix LANGUAGES CXX)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Uncomment these lines to test manual builds.
+set(TRAILMIX_YAML TRUE)
 
 # Including YAML support (with RapidYAML) is optional.
 if(TRAILMIX_YAML)
