@@ -33,4 +33,6 @@ SOFTWARE.
 
 [MurmurHash3](https://github.com/aappleby/smhasher/tree/master) by Austin Appleby.
 
+[Random for modern C++](https://github.com/ilqvya/random) copyright © 2017-2023 effolkronium (Illia Polishchuk).
+
 [Rapid YAML](https://github.com/biojppm/rapidyaml) copyright © 2018 Joao Paulo Magalhaes (<dev@jpmag.me>).
