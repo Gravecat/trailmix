@@ -1,0 +1,104 @@
+// math/vector2.hpp -- The Vector2 struct provides a simple way of storing and sharing 2D coordinates.
+
+// SPDX-FileType: SOURCE
+// SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
+// SPDX-License-Identifier: MIT
+
+#pragma once
+
+#include <cstdint>
+#include <functional>
+#include <initializer_list>
+
+#include "trailmix/math/hash_combine.hpp"
+
+namespace trailmix {
+
+// Simple two-dimensional integer coordinate struct.
+struct Vector2
+{
+    Vector2() : x(0), y(0) { }
+    Vector2(int32_t vx, int32_t vy) : x(vx), y(vy) { }
+    Vector2(std::initializer_list<int32_t> list)
+    {
+        auto it = list.begin();
+        x = (it != list.end()) ? *it++ : 0;
+        y = (it != list.end()) ? *it : 0;
+    }
+
+    Vector2     operator+(const Vector2 &other) const { return { x + other.x, y + other.y }; }
+    Vector2     operator-(const Vector2 &other) const { return { x - other.x, y - other.y }; }
+    Vector2     operator/(const Vector2 &other) const { return { x / other.x, y / other.y }; }
+    Vector2     operator*(const Vector2 &other) const { return { x * other.x, y * other.y }; }
+    Vector2     operator%(const Vector2 &other) const { return { x % other.x, y % other.y }; }
+    bool        operator==(const Vector2 &other) const { return (x == other.x && y == other.y); }
+    bool        operator!=(const Vector2 &other) const { return (x != other.x || y != other.y); }
+    bool        operator!() const { return (x == 0 && y == 0); }
+    bool        operator>(const Vector2 &other) const { return (x > other.x && y > other.y); }
+    bool        operator<(const Vector2 &other) const { return (x < other.x || y < other.y); }
+    explicit    operator bool() const { return (x != 0 || y != 0); }
+
+    template<typename T> Vector2    operator/(const T other) const { return {x / other, y / other}; }
+    template<typename T> Vector2    operator*(const T other) const { return {x * other, y * other}; }
+    template<typename T> Vector2    operator%(const T other) const { return {x % other, y % other}; }
+
+    int32_t x, y;
+};
+
+// As above, but for explicitly unsigned integer vectors.
+struct Vector2u
+{
+    Vector2u() : x(0), y(0) { }
+    Vector2u(uint32_t vx, uint32_t vy) : x(vx), y(vy) { }
+    Vector2u(std::initializer_list<uint32_t> list)
+    {
+        auto it = list.begin();
+        x = (it != list.end()) ? *it++ : 0;
+        y = (it != list.end()) ? *it : 0;
+    }
+
+    Vector2u    operator+(const Vector2u &other) const { return { x + other.x, y + other.y }; }
+    Vector2u    operator-(const Vector2u &other) const { return { x - other.x, y - other.y }; }
+    Vector2u    operator/(const Vector2u &other) const { return { x / other.x, y / other.y }; }
+    Vector2u    operator*(const Vector2u &other) const { return { x * other.x, y * other.y }; }
+    Vector2u    operator%(const Vector2u &other) const { return { x % other.x, y % other.y }; }
+    bool        operator==(const Vector2u &other) const { return (x == other.x && y == other.y); }
+    bool        operator!=(const Vector2u &other) const { return (x != other.x || y != other.y); }
+    bool        operator!() const { return (x == 0 && y == 0); }
+    bool        operator>(const Vector2u &other) const { return (x > other.x && y > other.y); }
+    bool        operator<(const Vector2u &other) const { return (x < other.x || y < other.y); }
+    explicit    operator bool() const { return (x != 0 || y != 0); }
+
+    template<typename T> Vector2u   operator/(const T other) const { return {x / other, y / other}; }
+    template<typename T> Vector2u   operator*(const T other) const { return {x * other, y * other}; }
+    template<typename T> Vector2u   operator%(const T other) const { return {x % other, y % other}; }
+
+    uint32_t x, y;
+};
+
+}   // namespace trailmix
+
+// specialise std::hash
+namespace std {
+using trailmix::hash_combine;
+template <> struct hash<trailmix::Vector2>
+{
+    std::size_t operator()(const trailmix::Vector2& v) const noexcept
+    {
+        std::size_t seed = 0;
+        hash_combine(seed, std::hash<int32_t>{}(v.x));
+        hash_combine(seed, std::hash<int32_t>{}(v.y));
+        return seed;
+    }
+};
+template <> struct hash<trailmix::Vector2u>
+{
+    std::size_t operator()(const trailmix::Vector2u& v) const noexcept
+    {
+        std::size_t seed = 0;
+        hash_combine(seed, std::hash<uint32_t>{}(v.x));
+        hash_combine(seed, std::hash<uint32_t>{}(v.y));
+        return seed;
+    }
+};
+}   // namespace std

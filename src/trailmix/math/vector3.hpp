@@ -10,6 +10,8 @@
 #include <functional>
 #include <initializer_list>
 
+#include "trailmix/math/hash_combine.hpp"
+
 namespace trailmix {
 
 // Simple three-dimensional integer coordinate struct.
@@ -43,9 +45,6 @@ struct Vector3
 
     int32_t x, y, z;
 };
-
-inline void hash_combine(std::size_t& seed, std::size_t h) noexcept
-{ seed ^= h + 0x9e3779b9 + (seed << 6) + (seed >> 2); }
 
 }   // namespace trailmix
 
