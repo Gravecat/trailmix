@@ -10,13 +10,20 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Including YAML support (with RapidYAML) is optional.
+if(TRAILMIX_YAML)
+  set(TRAILMIX_YAML 1)
+  add_subdirectory(src/3rdparty/rapidyaml)
+endif()
+
 # Source files.
 set(TRAILMIX_CPPS
-  src/file/filereader.cpp
-  src/file/filewriter.cpp
-  src/file/fileutils.cpp
-  src/sys/binpath.cpp
-  src/text/stringutils.cpp
+  src/trailmix/file/filereader.cpp
+  src/trailmix/file/filewriter.cpp
+  src/trailmix/file/fileutils.cpp
+  src/trailmix/sys/binpath.cpp
+  src/trailmix/text/stringutils.cpp
+  $<$<BOOL:${TRAILMIX_YAML}>:src/trailmix/file/yaml.cpp>
 )
 
 # Third-party code being built as separate object files.
@@ -86,11 +93,12 @@ add_compile_definitions(
 add_library(trailmix STATIC ${TRAILMIX_CPPS})
 target_link_libraries(trailmix PRIVATE
   ${CMAKE_THREAD_LIBS_INIT}
+  $<$<BOOL:${TRAILMIX_YAML}>:rapidyaml>
 #  murmurhash3
 )
 
 # Include directories.
-target_include_directories(trailmix PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_include_directories(trailmix PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # Compiler-specific flags.
 option(WARNINGS_AS_ERRORS "Turn warnings into errors" OFF)

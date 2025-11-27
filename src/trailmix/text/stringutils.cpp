@@ -2,7 +2,7 @@
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
-// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: MIT
 
 #include <algorithm>
 
@@ -249,4 +249,4 @@ string strip_trailing_newlines(string str)
     return str;
 }
 
-} } // stringutils, westgate namespaces
+} } // stringutils, trailmix namespaces
