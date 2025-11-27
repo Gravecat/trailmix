@@ -4,7 +4,7 @@
 # SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 # SPDX-License-Identifier: MIT
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(trailmix LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,7 +12,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Source files.
 set(TRAILMIX_CPPS
-  src/trailmix-main.cpp
   src/trailmix/sys/binpath.cpp
 )
 
@@ -80,14 +79,14 @@ add_compile_definitions(
 )
 
 # Binary file output. This binary won't actually do anything, it's just to ensure the rest of the code compiles.
-add_executable(trailmix ${TRAILMIX_CPPS})
+add_library(trailmix STATIC ${TRAILMIX_CPPS})
 target_link_libraries(trailmix PRIVATE
   ${CMAKE_THREAD_LIBS_INIT}
 #  murmurhash3
 )
 
 # Include directories.
-target_include_directories(trailmix PRIVATE "${CMAKE_SOURCE_DIR}/src")
+target_include_directories(trailmix PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # Compiler-specific flags.
 option(WARNINGS_AS_ERRORS "Turn warnings into errors" OFF)
