@@ -14,6 +14,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(TRAILMIX_CPPS
   src/file/fileutils.cpp
   src/sys/binpath.cpp
+  src/text/stringutils.cpp
 )
 
 # Third-party code being built as separate object files.
