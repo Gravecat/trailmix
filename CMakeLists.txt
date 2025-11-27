@@ -4,16 +4,14 @@
 # SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 # SPDX-License-Identifier: MIT
 
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.5)
 project(trailmix LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Source files.
-set(TRAILMIX_CPPS
-  src/main.cpp
-)
+set(TRAILMIX_CPPS src/trailmix-main.cpp)
 
 # Third-party code being built as separate object files.
 #add_subdirectory(src/3rdparty/murmurhash3)
