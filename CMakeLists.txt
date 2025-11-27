@@ -11,13 +11,20 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Uncomment these lines to test manual builds.
-set(TRAILMIX_YAML TRUE)
+# Uncomment this line to test manual builds.
+#set(TRAILMIX_ALL_EXTRAS TRUE)
 
-# Including YAML support (with RapidYAML) is optional.
+if(TRAILMIX_ALL_EXTRAS)
+  set(TRAILMIX_MURMURHASH TRUE)
+  set(TRAILMIX_YAML TRUE)
+endif()
+
+# Optional parts of Trailmix
 if(TRAILMIX_YAML)
-  set(TRAILMIX_YAML 1)
   add_subdirectory(src/3rdparty/rapidyaml)
+endif()
+if(TRAILMIX_MURMURHASH)
+  add_subdirectory(src/3rdparty/murmurhash3)
 endif()
 
 # Source files.
@@ -27,6 +34,7 @@ set(TRAILMIX_CPPS
   src/trailmix/file/fileutils.cpp
   src/trailmix/sys/binpath.cpp
   src/trailmix/text/stringutils.cpp
+  $<$<BOOL:${TRAILMIX_YAML}>:src/trailmix/text/hash.cpp>
   $<$<BOOL:${TRAILMIX_YAML}>:src/trailmix/file/yaml.cpp>
 )
 
@@ -97,6 +105,7 @@ add_compile_definitions(
 add_library(trailmix STATIC ${TRAILMIX_CPPS})
 target_link_libraries(trailmix PRIVATE
   ${CMAKE_THREAD_LIBS_INIT}
+  $<$<BOOL:${TRAILMIX_YAML}>:murmurhash3>
   $<$<BOOL:${TRAILMIX_YAML}>:rapidyaml>
 #  murmurhash3
 )

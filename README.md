@@ -31,4 +31,6 @@ SOFTWARE.
 
 ## Other Included Libraries
 
+[MurmurHash3](https://github.com/aappleby/smhasher/tree/master) by Austin Appleby.
+
 [Rapid YAML](https://github.com/biojppm/rapidyaml) copyright © 2018 Joao Paulo Magalhaes (<dev@jpmag.me>).
