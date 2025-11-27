@@ -11,7 +11,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Source files.
-set(TRAILMIX_CPPS src/trailmix-main.cpp)
+set(TRAILMIX_CPPS
+  src/trailmix-main.cpp
+  src/trailmix/sys/binpath.cpp
+)
 
 # Third-party code being built as separate object files.
 #add_subdirectory(src/3rdparty/murmurhash3)
