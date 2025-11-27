@@ -1,4 +1,4 @@
-// math/hash_combine.hpp -- Used internally by Vector2, Vector2u and Vector3 to work with std::hash.
+// internal/hash_combine.hpp -- Used internally by Vector2, Vector2u and Vector3 to work with std::hash.
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>

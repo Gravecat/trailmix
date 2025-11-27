@@ -10,7 +10,7 @@
 #include <functional>
 #include <initializer_list>
 
-#include "trailmix/math/hash_combine.hpp"
+#include "trailmix/internal/hash_combine.hpp"
 
 namespace trailmix {
 
