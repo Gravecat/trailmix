@@ -25,7 +25,7 @@ uint32_t murmur3(const string& str)
     uint32_t hash = 0;  // Shouldn't matter, but I don't like uninitialized variables on principle.
     MurmurHash3_x86_32(str.data(), static_cast<int>(str.size()), seed, &hash);
 
-#ifdef WESTGATE_BUILD_DEBUG
+#ifdef TRAILMIX_BUILD_DEBUG
     check_hash_collision(str, hash);
 #endif
 
