@@ -5,6 +5,10 @@ The Trailmix library is a collection of mismatched, odd bits and pieces of utili
 
 It's primarily intended for use in my own personal projects, but I'm putting it up here so that anyone can use it, or plunder whatever bits might be helpful.
 
+I **strongly** encourage anyone who uses this library to either copy the parts you need (or the whole repo) into your own project, or to use FetchContent in CMake to target the
+specific commit you're using. Because this library is primarily intended for personal use, I can make no guarantees that the functions won't change, get renamed or moved around, or
+even get removed entirely in future commits.
+
 
 ## MIT License
 

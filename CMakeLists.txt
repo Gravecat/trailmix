@@ -35,6 +35,7 @@ set(TRAILMIX_CPPS
   src/trailmix/math/bresenham.cpp
   src/trailmix/math/mathutils.cpp
   src/trailmix/sys/binpath.cpp
+  src/trailmix/text/ansiutils.cpp
   src/trailmix/text/stringutils.cpp
   $<$<BOOL:${TRAILMIX_ALL_EXTRAS}>:src/trailmix/internal/test-headers.cpp>
   $<$<BOOL:${TRAILMIX_HASH}>:src/trailmix/text/hash.cpp>
