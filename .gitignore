@@ -15,6 +15,9 @@
 *.o
 *.so
 
+# Personal scripts I use for local tasks. Not useful for anyone else.
+scripts/
+
 # Build folders.
 build/
 build-*/
