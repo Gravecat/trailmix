@@ -12,6 +12,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Source files.
 set(TRAILMIX_CPPS
+  src/file/filereader.cpp
+  src/file/filewriter.cpp
   src/file/fileutils.cpp
   src/sys/binpath.cpp
   src/text/stringutils.cpp
