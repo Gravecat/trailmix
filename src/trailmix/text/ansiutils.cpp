@@ -8,6 +8,7 @@ using std::string;
 using std::vector;
 
 namespace trailmix {
+namespace ansiutils {
 
 // Strips all ANSI colour tags like {M} from a string.
 string ansi_strip(const string &str)
@@ -93,4 +94,4 @@ string flatten_tags(const string &str)
     return output;
 }
 
-}   // namespace trailmix
+} } // namespaces ansiutils, trailmix
