@@ -33,6 +33,7 @@ set(TRAILMIX_CPPS
   src/trailmix/file/filewriter.cpp
   src/trailmix/file/fileutils.cpp
   src/trailmix/math/bresenham.cpp
+  src/trailmix/math/colour.cpp
   src/trailmix/math/flags.cpp
   src/trailmix/math/mathutils.cpp
   src/trailmix/sys/binpath.cpp
