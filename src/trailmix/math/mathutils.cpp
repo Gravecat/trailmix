@@ -32,4 +32,13 @@ float distance_between(const Vector2& start, const Vector2& end)
     return std::sqrt(dx * dx + dy * dy);
 }
 
+// Rotates cartesian coordinates by a specified number of radians.
+void rotate_cartesian(float *x, float *y, float radians)
+{
+    const float radius = std::sqrt(((*x) * (*x)) + ((*y) * (*y)));
+    const float angle = std::atan2(*y, *x) + radians;
+    *x = radius * std::cos(angle);
+    *y = radius * std::sin(angle);
+}
+
 }   // namespace trailmix::math::utils
