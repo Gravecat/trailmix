@@ -72,6 +72,21 @@ string possessive_string(const string& str)
     else return str + "'s";
 }
 
+// Replaces input with output, maintaining the capitalization of input (e.g. input="Meow" output="cat" result="Cat")
+string replace_keep_capitalization(const string& input, const string& output)
+{
+    if (!input.size() || !output.size()) return "";
+    string result = str_tolower(output);
+
+    bool first_letter_caps = (input[0] >= 'A' && input[0] <= 'Z');
+    bool all_caps = (input.size() > 2 && input[1] >= 'A' && input[1] <= 'Z');
+
+    if (all_caps) return str_toupper(result);
+    else if (first_letter_caps && result[0] >= 'a' && result[0] <= 'z') result[0] -= 32;
+
+    return result;
+}
+
 // Converts a string to lower-case.
 string str_tolower(string str)
 {
