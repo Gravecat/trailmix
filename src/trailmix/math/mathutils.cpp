@@ -6,6 +6,7 @@
 
 #include "trailmix/math/mathutils.hpp"
 
+#include <cmath>
 #include <stdexcept>
 #include <string>
 
@@ -21,6 +22,14 @@ uint32_t array_index(Vector2u position, Vector2u array_size)
         throw runtime_error("array_index given invalid coords: " + to_string(position.x) + "," + to_string(position.y));
     else if (!array_size.x || !array_size.y) throw runtime_error("array_index given invalid array size: " + to_string(array_size.x) + "," + to_string(array_size.y));
     return (position.y * array_size.x) + position.x;
+}
+
+// Calculates the distance between two coordinates in 2D space.
+float distance_between(const Vector2& start, const Vector2& end)
+{
+    const float dx = float(start.x - end.x);
+    const float dy = float(start.y - end.y);
+    return std::sqrt(dx * dx + dy * dy);
 }
 
 }   // namespace trailmix::math::utils
