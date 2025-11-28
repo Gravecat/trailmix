@@ -18,5 +18,6 @@ std::string intostr_pretty(int num);    // Returns a 'pretty' version of a numbe
 std::string itoh(uint32_t num, uint8_t min_len);    // Converts an integer into a hex string.
 std::string number_to_text(int64_t num);    // Converts a number (e.g. 123) into a string (e.g. "one hundred and twenty-three").
 bool        str_to_bool(const std::string& str);    // Converts a string to a bool.
+std::wstring    to_wstring(const std::string& str); // Converts a string to a wstring.
 
 }   // namespace trailmix::text::conversion

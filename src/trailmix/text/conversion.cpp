@@ -141,4 +141,7 @@ bool str_to_bool(const std::string& str)
     }
 }
 
+// Converts a string to a wstring.
+std::wstring to_wstring(const string &str) { return std::wstring(str.begin(), str.end()); }
+
 }   // namespace trailmix::text::conversion
