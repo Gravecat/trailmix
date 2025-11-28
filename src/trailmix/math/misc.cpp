@@ -7,7 +7,6 @@
 #include <cmath>
 
 #include "trailmix/math/misc.hpp"
-#include "trailmix/math/random.hpp"
 
 using namespace trailmix::math;
 
@@ -23,15 +22,5 @@ float distance_between(const Vector2& start, const Vector2& end)
 
 // Interpolates between two floating point values.
 double lerp(double a, double b, double f) { return (a * (1.0f - f)) + (b * f); }
-
-// Mixes up an integer a little.
-uint32_t mixup(unsigned int num, bool big_mix)
-{
-    int64_t variance = num / (big_mix ? 2 : 10);
-    if (variance <= 0) variance = 1;
-    uint32_t result = static_cast<uint32_t>(num) + random::get<int>(0, variance * 2) - variance;
-    if (result < 1) result = 1;
-    return result;
-}
 
 }   // namespace trailmix::math::misc

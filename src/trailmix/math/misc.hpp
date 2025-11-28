@@ -12,6 +12,5 @@ namespace trailmix::math::misc {
 
 float       distance_between(const Vector2& start, const Vector2& end); // Calculates the distance between two coordinates in 2D space.
 double      lerp(double a, double b, double f); // Interpolates between two floating point values.
-uint32_t    mixup(unsigned int num, bool big_mix = false);  // Mixes up an integer a little.
 
 }   // namespace trailmix::math::misc
