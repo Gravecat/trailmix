@@ -45,6 +45,16 @@ uint32_t mixup(unsigned int num, bool big_mix)
     return result;
 }
 
+// Rounds a float to a specified number of digits.
+double round_to(double num, unsigned int digits)
+{
+    if (digits == 2) return ::floorf(num * 100 + 0.5) / 100;    // why does std::floorf() not exist in GCC? :(
+    const double power = std::pow(10, digits);
+    num *= power;
+    const double rounded = std::round(num);
+    return rounded / power;
+}
+
 // Rotates cartesian coordinates by a specified number of radians.
 void rotate_cartesian(float *x, float *y, float radians)
 {
