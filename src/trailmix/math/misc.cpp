@@ -1,4 +1,4 @@
-// math/mathutils.cpp -- Miscellaneous utility files for math and number-related tasks.
+// math/misc.cpp -- Miscellaneous utility files for math and number-related tasks.
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
@@ -8,14 +8,14 @@
 #include <stdexcept>
 #include <string>
 
-#include "trailmix/math/mathutils.hpp"
+#include "trailmix/math/misc.hpp"
 #include "trailmix/math/random.hpp"
 
 using namespace trailmix::math;
 using std::runtime_error;
 using std::to_string;
 
-namespace trailmix::math::utils {
+namespace trailmix::math::misc {
 
 // Takes X,Y coordinates, and returns a flat array index for the coordinates.
 uint32_t array_index(Vector2u position, Vector2u array_size)
@@ -54,4 +54,4 @@ void rotate_cartesian(float *x, float *y, float radians)
     *y = radius * std::sin(angle);
 }
 
-}   // namespace trailmix::math::utils
+}   // namespace trailmix::math::misc

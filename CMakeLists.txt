@@ -35,7 +35,7 @@ set(TRAILMIX_CPPS
   src/trailmix/math/bresenham.cpp
   src/trailmix/math/colour.cpp
   src/trailmix/math/flags.cpp
-  src/trailmix/math/mathutils.cpp
+  src/trailmix/math/misc.cpp
   src/trailmix/math/poisson.cpp
   src/trailmix/math/scientific-notation.cpp
   src/trailmix/math/voronoi.cpp

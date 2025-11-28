@@ -8,9 +8,9 @@
 
 #include "trailmix/math/poisson.hpp"
 #include "trailmix/math/random.hpp"
-#include "trailmix/math/mathutils.hpp"
+#include "trailmix/math/misc.hpp"
 
-using namespace trailmix::math::utils;
+using namespace trailmix::math::misc;
 using std::vector;
 
 namespace trailmix::math {
