@@ -190,6 +190,13 @@ string number_to_text(int64_t num)
     return (negative ? "minus " : "") + output;
 }
 
+// Converts an integer to a string; handles out-of-range values gracefully.
+int32_t stoi(const string& str)
+{
+    try { return (std::stoll(str)); }
+    catch(const std::exception&) { return INT32_MAX; }
+}
+
 // Converts a string to a bool.
 bool str_to_bool(const string& str)
 {

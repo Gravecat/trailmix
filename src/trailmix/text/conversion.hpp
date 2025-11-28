@@ -23,6 +23,7 @@ std::string     intostr_sign(int num);                  // Converts a nummber (l
 std::string     itoh(uint32_t num, uint8_t min_len);    // Converts an integer into a hex string.
 std::string     itos(uint32_t num, size_t min_len);     // Converts an integer to a string, but optionally pads it to a minimum length with leading zeroes.
 std::string     number_to_text(int64_t num);            // Converts a number (e.g. 123) into a string (e.g. "one hundred and twenty-three").
+int32_t         stoi(const std::string& str);           // Converts an integer to a string; handles out-of-range values gracefully.
 bool            str_to_bool(const std::string& str);    // Converts a string to a bool.
 std::wstring    to_wstring(const std::string& str);     // Converts a string to a wstring.
 
