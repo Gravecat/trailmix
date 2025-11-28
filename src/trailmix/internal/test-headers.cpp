@@ -4,7 +4,6 @@
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 // SPDX-License-Identifier: MIT
 
-#include "trailmix/math/random.hpp"
 #include "trailmix/math/rect.hpp"
 #include "trailmix/math/vector2.hpp"
 #include "trailmix/math/vector3.hpp"
