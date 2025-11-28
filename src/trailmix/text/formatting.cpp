@@ -4,8 +4,12 @@
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 // SPDX-License-Identifier: MIT
 
+#include <cmath>
+
+#include "trailmix/text/ansiutils.hpp"
 #include "trailmix/text/formatting.hpp"
 
+using namespace trailmix::text::ansi;
 using std::string;
 using std::vector;
 
@@ -65,6 +69,30 @@ string comma_list(vector<string> vec, uint8_t mode)
         }
     }
     return str;
+}
+
+// Pads a string to a given length.
+string pad_string(const string& str, unsigned int min_len, bool ansi)
+{
+    string output = str;
+    uint32_t len = (ansi ? ansi_strlen(str) : str.size());
+    if (len < min_len) output += string(min_len - len, ' ');
+    return output;
+}
+
+// As above, but centers the string.
+string pad_string_centre(const string& str, unsigned int min_len, bool ansi)
+{
+    string output = str;
+    uint32_t len = (ansi ? ansi_strlen(str) : str.size());
+    if (len < min_len)
+    {
+        const int padding = min_len - len;
+        const int left_padding = std::round(padding / 2.0f);
+        const int right_padding = padding - left_padding;
+        output = (left_padding ? string(left_padding, ' ') : "") + output + (right_padding ? string(right_padding, ' ') : "");
+    }
+    return output;
 }
 
 // Strips trailing newlines from a given string.
