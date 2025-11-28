@@ -28,6 +28,7 @@ std::string     number_to_text(int64_t num);            // Converts a number (e.
 int32_t         stoi(const std::string& str);           // Converts an integer to a string; handles out-of-range values gracefully.
 std::vector<int>    stoi_vec(const std::vector<std::string>& vec);  // Converts a std::string vector into an int vector.
 bool            str_to_bool(const std::string& str);    // Converts a string to a bool.
+std::string     timestamp(bool pretty);                 // Returns a timestamp, either compact or pretty.
 std::string     time_string_rough(float seconds);       // Returns a time string as a rough description ("a few seconds", "a moment", "a few minutes").
 std::wstring    to_wstring(const std::string& str);     // Converts a string to a wstring.
 

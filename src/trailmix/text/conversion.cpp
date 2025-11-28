@@ -5,6 +5,7 @@
 // SPDX-License-Identifier: MIT
 
 #include <algorithm>
+#include <ctime>
 #include <iomanip>
 #include <iterator>
 #include <sstream>
@@ -302,6 +303,27 @@ bool str_to_bool(const string& str)
         case '1': case 't': case 'T': case 'y': case 'Y': return true;
         default: throw runtime_error("Invalid boolean string: " + str);
     }
+}
+
+// Returns a timestamp in the format of: 1802152346
+string timestamp(bool pretty)
+{
+    time_t ltime = std::time(nullptr);
+    struct tm result;
+#ifdef TRAILMIX_TARGET_WINDOWS
+    localtime_s(&result, &ltime);
+#else
+    localtime_r(&ltime, &result);
+#endif
+
+    string year   = to_string(result.tm_year - 100);
+    string month  = to_string(result.tm_mon + 1);
+    string day    = to_string(result.tm_mday);
+    string hour   = to_string(result.tm_hour);
+    string minute = to_string(result.tm_min);
+    auto pad = [](string& s){ if (s.size() == 1) s = "0" + s; };
+    pad(month); pad(day); pad(hour); pad(minute);
+    return pretty ? day + "/" + month + "/" + year + " " + hour + ":" + minute : year + month + day + hour + minute;
 }
 
 // Returns a time string as a rough description ("a few seconds", "a moment", "a few minutes").
