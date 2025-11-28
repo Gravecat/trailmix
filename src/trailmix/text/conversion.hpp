@@ -17,6 +17,5 @@ uint32_t    htoi(const std::string& hex_str);       // Converts a hex string int
 std::string intostr_pretty(int num);    // Returns a 'pretty' version of a number in string format, such as "12,345".
 std::string itoh(uint32_t num, uint8_t min_len);    // Converts an integer into a hex string.
 std::string number_to_text(int64_t num);    // Converts a number (e.g. 123) into a string (e.g. "one hundred and twenty-three").
-std::string str_tolower(std::string str);   // Converts a string to lower-case.
 
 }   // namespace trailmix::text::conversion

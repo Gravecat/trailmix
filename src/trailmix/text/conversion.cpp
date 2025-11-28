@@ -127,11 +127,4 @@ string number_to_text(int64_t num)
     return (negative ? "minus " : "") + output;
 }
 
-// Converts a string to lower-case.
-string str_tolower(string str)
-{
-    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
-    return str;
-}
-
 }   // namespace trailmix::text::conversion

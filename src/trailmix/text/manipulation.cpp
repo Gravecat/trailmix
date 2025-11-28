@@ -7,8 +7,10 @@
 #include <algorithm>
 #include <numeric>
 
+#include "trailmix/text/conversion.hpp"
 #include "trailmix/text/manipulation.hpp"
 
+using namespace trailmix::text::conversion;
 using std::string;
 using std::transform;
 using std::vector;
@@ -68,6 +70,13 @@ string possessive_string(const string& str)
     if (str.empty()) return "";
     if (str[str.size() - 1] == 's' || str[str.size() - 1] == 'S') return str + "'";
     else return str + "'s";
+}
+
+// Converts a string to lower-case.
+string str_tolower(string str)
+{
+    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+    return str;
 }
 
 // String split/explode function.
