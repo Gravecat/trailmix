@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <iomanip>
+#include <iterator>
 #include <sstream>
 #include <stdexcept>
 
@@ -14,11 +15,24 @@
 using std::runtime_error;
 using std::string;
 using std::to_string;
+using std::vector;
 
 namespace trailmix::text::conversion {
 
 // Converts a bool to a string ("true" or "false").
 string bool_to_str(bool b) { return (b ? "true" : "false"); }
+
+// Simple function to collapse a string vector into words.
+string collapse_vector(vector<string> vec)
+{
+    std::ostringstream output;
+    if (!vec.empty())
+    {
+        std::copy(vec.begin(), vec.end() - 1, std::ostream_iterator<string>(output, " "));
+        output << vec.back();
+    }
+    return output.str();
+}
 
 // Converts a float or double to a string.
 string ftos(double num, int precision)
