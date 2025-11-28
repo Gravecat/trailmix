@@ -13,6 +13,7 @@
 
 using namespace trailmix::text::ansi;
 using std::string;
+using std::to_string;
 using std::vector;
 
 namespace trailmix::text::formatting {
@@ -95,6 +96,14 @@ string pad_string_centre(const string& str, unsigned int min_len, bool ansi)
         output = (left_padding ? string(left_padding, ' ') : "") + output + (right_padding ? string(right_padding, ' ') : "");
     }
     return output;
+}
+
+// Right-aligns a percentage string.
+string right_align_percentage(uint8_t percent)
+{
+    string result = to_string(percent) + "%";
+    while (result.size() < 4) result = " " + result;
+    return result;
 }
 
 // Strips all instances of to_remove out of a string.
