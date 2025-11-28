@@ -35,6 +35,16 @@ uint32_t htoi(const string& hex_str)
 	return result;
 }
 
+// Converts an integer into a hex string.
+string itoh(uint32_t num, uint8_t min_len)
+{
+    std::stringstream ss;
+    ss << std::hex << num;
+    string hex = ss.str();
+    while (min_len && hex.size() < min_len) hex = "0" + hex;
+    return hex;
+}
+
 // Converts a number (e.g. 123) into a string (e.g. "one hundred and twenty-three").
 string number_to_text(int64_t num)
 {
