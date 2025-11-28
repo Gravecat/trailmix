@@ -10,6 +10,7 @@
 #include <sstream>
 #include <stdexcept>
 
+#include "trailmix/math/conversion.hpp"
 #include "trailmix/text/conversion.hpp"
 
 using std::runtime_error;
@@ -59,6 +60,71 @@ uint32_t htoi(const string& hex_str)
 	uint32_t result;
 	ss >> result;
 	return result;
+}
+
+// Converts an int into a k-style string; for example 10000 becomes 10k.
+string intostr_k(uint64_t num, unsigned int precision)
+{
+    uint64_t shortened = 0;
+    double remainder = 0;
+    string digit = "";
+    if (num < 100) return to_string(num);
+    else if (num < 1000)
+    {
+        if (precision)
+        {
+            remainder = (num % 1000) / 1000.0f;
+            shortened = num / 1000;
+            digit = "k";
+            if (!remainder) return to_string(num);
+        }
+        else return to_string(num);
+    }
+    else if (num >= 1000000000000000000ULL)
+    {
+        shortened = num / 1000000000000000000ULL;
+        remainder = num % (1000000000000000000ULL) / 1000000000000000000.0f;
+        digit = "E";
+    }
+    else if (num >= 1000000000000000ULL)
+    {
+        shortened = num / 1000000000000000ULL;
+        remainder = num % (1000000000000000ULL) / 1000000000000000.0f;
+        digit = "P";
+    }
+    else if (num >= 1000000000000ULL)
+    {
+        shortened = num / 1000000000000ULL;
+        remainder = num % (1000000000000ULL) / 1000000000000.0f;
+        digit = "T";
+    }
+    else if (num >= 1000000000UL)
+    {
+        shortened = num / 1000000000UL;
+        remainder = (num % 1000000000UL) / 1000000000.0f;
+        digit = "G";
+    }
+    else if (num >= 1000000UL)
+    {
+        shortened = num / 1000000UL;
+        remainder = (num % 1000000UL) / 1000000.0f;
+        digit = "M";
+    }
+    else
+    {
+        shortened = num / 1000;
+        remainder = (num % 1000) / 1000.0f;
+        digit = "k";
+    }
+    if (remainder && precision)
+    {
+        string remainder_str = ftos(math::conversion::round_to(remainder, precision)).substr(1);
+        if (!remainder_str.size()) shortened++;
+        string result = to_string(shortened) + remainder_str + digit;
+        return result;
+    }
+    if (digit.size() && !shortened) shortened = 1;
+    return to_string(shortened) + digit;
 }
 
 // Returns a 'pretty' version of a number in string format, such as "12,345".
