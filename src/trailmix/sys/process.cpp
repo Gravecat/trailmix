@@ -12,6 +12,8 @@
 #include <cstdlib>
 #include <psapi.h>  // MUST be included AFTER windows.h
 
+using std::string;
+
 namespace trailmix::sys {
 
 // Used internally with bring_to_foreground()
@@ -45,12 +47,12 @@ BOOL CALLBACK Process::btf_callback(HWND window_handle, LPARAM pid)
 void Process::bring_to_foreground(DWORD pid) { EnumWindows(&Process::btf_callback, static_cast<LPARAM>(pid)); }
 
 // Checks if lom.exe is already running; if so, brings that window to the foreground then exits quietly.
-void Process::check_if_already_running(const std::string& mutex)
+void Process::check_if_already_running(const string& mutex)
 {
     CreateMutexA(0, false, ("Local\\" + mutex).c_str());
     if (GetLastError() == ERROR_ALREADY_EXISTS)
     {
-        std::string process_name = pid_to_name(GetCurrentProcessId());
+        string process_name = pid_to_name(GetCurrentProcessId());
         process_name = process_name.substr(process_name.find_last_of("\\") + 1);
         if (process_name.size()) bring_to_foreground(find_process_id(process_name.c_str()));
         exit(EXIT_FAILURE);
@@ -58,7 +60,7 @@ void Process::check_if_already_running(const std::string& mutex)
 }
 
 // Finds a given process ID, given a specified executable filename.
-DWORD Process::find_process_id(std::string filename)
+DWORD Process::find_process_id(string filename)
 {
     LPDWORD process_ids = static_cast<LPDWORD>(HeapAlloc(GetProcessHeap(), 0, WINX_FP_MAX_PROCESSES * sizeof(DWORD)));
     DWORD found_id = 0;
@@ -97,9 +99,9 @@ DWORD Process::find_process_id(std::string filename)
 }
 
 // Takes a Windows process ID and returns the name of the process.
-std::string Process::pid_to_name(DWORD pid)
+string Process::pid_to_name(DWORD pid)
 {
-    std::string result;
+    string result;
     HANDLE handle = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, false, pid);
     if (handle)
     {

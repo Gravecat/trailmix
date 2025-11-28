@@ -8,8 +8,6 @@
 
 #include "trailmix/math/colour.hpp"
 
-using std::round;
-
 namespace trailmix::math::colour {
 
 // Converts HSB colour to RGB.
@@ -36,8 +34,8 @@ RGB hsb_to_rgb(float hue, float saturation, float brightness)
             default: red = green = blue = 0; break;
         }
     }
-    return { static_cast<uint8_t>(round(red * 255.0f)), static_cast<uint8_t>(round(green * 255.0f)),
-        static_cast<uint8_t>(round(blue * 255.0f)) };
+    return { static_cast<uint8_t>(std::round(red * 255.0f)), static_cast<uint8_t>(std::round(green * 255.0f)),
+        static_cast<uint8_t>(std::round(blue * 255.0f)) };
 }
 
 }   // trailmix::math::colour namespace

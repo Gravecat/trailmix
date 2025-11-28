@@ -10,10 +10,8 @@
 
 #include "trailmix/file/fileutils.hpp"
 
-using std::ifstream;
 using std::runtime_error;
 using std::string;
-using std::stringstream;
 using std::vector;
 namespace fs = std::filesystem;
 
@@ -23,9 +21,9 @@ namespace trailmix::file::utils {
 string file_to_string(const string& filename)
 {
     if (!fs::exists(filename)) throw runtime_error("Invalid file: " + filename);
-    ifstream file(filename);
+    std::ifstream file(filename);
     if (!file.is_open()) throw runtime_error("Cannot open file: " + filename);
-    stringstream buffer;
+    std::stringstream buffer;
     buffer << file.rdbuf();
     file.close();
     return buffer.str();
@@ -36,7 +34,7 @@ vector<string> file_to_vec(const string& filename)
 {
     if (!fs::exists(filename)) throw runtime_error("Invalid file: " + filename);
     vector<string> lines;
-    ifstream file(filename);
+    std::ifstream file(filename);
     if (!file.is_open()) throw runtime_error("Cannot open file: " + filename);
 
     string line;

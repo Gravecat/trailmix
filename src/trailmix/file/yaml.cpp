@@ -7,11 +7,10 @@
 #include "trailmix/file/fileutils.hpp"
 #include "trailmix/file/yaml.hpp"
 
-using std::map;
+using namespace trailmix::file::utils;
 using std::runtime_error;
 using std::string;
 using std::vector;
-using trailmix::file::utils::file_to_string;
 
 namespace trailmix::file {
 
@@ -76,11 +75,11 @@ vector<string> YAML::keys() const
 }
 
 // Retrieves the key/value pairs of a map.
-map<string, string> YAML::keys_vals() const
+std::map<string, string> YAML::keys_vals() const
 {
     if (!is_map()) throw runtime_error("Not a map!");
     ryml::ConstNodeRef::children_view children = noderef().children();
-    map<string, string> map_out;
+    std::map<string, string> map_out;
     for (auto child : children)
     {
         string key_str = (string(child.key().str).substr(0, child.key().len));

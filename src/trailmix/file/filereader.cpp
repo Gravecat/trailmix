@@ -10,7 +10,6 @@
 #include "trailmix/file/filereader.hpp"
 #include "trailmix/text/formatting.hpp"
 
-using std::ios;
 using std::runtime_error;
 using std::string;
 using std::to_string;
@@ -27,10 +26,10 @@ FileReader::FileReader(string filename, bool allow_missing_file) : read_index_(0
         if (allow_missing_file) return;
         else throw runtime_error("Cannot load file: " + filename);
     }
-    std::ifstream file(filename, ios::binary | ios::ate);
+    std::ifstream file(filename, std::ios::binary | std::ios::ate);
     if (!file.is_open()) throw runtime_error("Cannot load file: " + filename);
     std::streampos file_size = file.tellg();
-    file.seekg(0, ios::beg);
+    file.seekg(0, std::ios::beg);
     data_.resize(static_cast<size_t>(file_size));
     file.read(data_.data(), file_size);
     file.close();

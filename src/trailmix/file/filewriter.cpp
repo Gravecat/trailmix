@@ -9,10 +9,9 @@
 #include "trailmix/file/filewriter.hpp"
 #include "trailmix/sys/binpath.hpp"
 
-using std::ios;
+using namespace trailmix::sys;
 using std::string;
 using std::vector;
-using trailmix::sys::BinPath;
 namespace fs = std::filesystem;
 
 namespace trailmix::file {
@@ -22,7 +21,7 @@ FileWriter::FileWriter(const string& filename)
 {
     const string bp_filename = BinPath::game_path(filename);
     fs::remove(bp_filename);
-    file_out_.open(bp_filename.c_str(), ios::binary | ios::out);
+    file_out_.open(bp_filename.c_str(), std::ios::binary | std::ios::out);
 }
 
 // Destructor, closes any open binary files.

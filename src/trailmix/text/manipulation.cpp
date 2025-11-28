@@ -12,7 +12,6 @@
 
 using namespace trailmix::text::conversion;
 using std::string;
-using std::transform;
 using std::vector;
 
 namespace trailmix::text::manipulation {
@@ -62,7 +61,7 @@ bool find_and_replace(string& input, const string& to_find, const string& to_rep
 
 // Takes a vector of strings and squashes them into one string.
 string join_words(vector<string> vec, const string& spacer)
-{ return std::accumulate(vec.begin() + 1, vec.end(), vec[0], [&spacer](const std::string& a, const std::string& b) { return a + spacer + b; }); }
+{ return std::accumulate(vec.begin() + 1, vec.end(), vec[0], [&spacer](const string& a, const string& b) { return a + spacer + b; }); }
 
 // Makes a string into a possessive noun (e.g. orc = orc's, platypus = platypus')
 string possessive_string(const string& str)

@@ -10,6 +10,7 @@
 #include "trailmix/math/random.hpp"
 #include "trailmix/math/mathutils.hpp"
 
+using namespace trailmix::math::utils;
 using std::vector;
 
 namespace trailmix::math {
@@ -108,7 +109,7 @@ bool PoissonDiskSampler::is_valid_point(const Vector2& p) const
             if (new_grid_x >= 0 && new_grid_x < grid_width_ && new_grid_y >= 0 && new_grid_y < grid_height_)
             {
                 const int idx = grid_[new_grid_y][new_grid_x];
-                if (idx != -1 && math::utils::distance_between(p, points_[idx]) < min_distance_) return false;
+                if (idx != -1 && distance_between(p, points_[idx]) < min_distance_) return false;
             }
         }
     }

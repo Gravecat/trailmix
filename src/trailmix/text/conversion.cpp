@@ -13,7 +13,6 @@
 
 using std::runtime_error;
 using std::string;
-using std::stringstream;
 
 namespace trailmix::text::conversion {
 
@@ -23,7 +22,7 @@ string bool_to_str(bool b) { return (b ? "true" : "false"); }
 // Converts a float or double to a string.
 string ftos(double num, int precision)
 {
-    stringstream ss;
+    std::stringstream ss;
     ss << std::fixed << std::setprecision(precision) << num;
     return ss.str();
 }
@@ -31,7 +30,7 @@ string ftos(double num, int precision)
 // Converts a hex string into an integer.
 uint32_t htoi(const string& hex_str)
 {
-	stringstream ss;
+	std::stringstream ss;
 	ss << std::hex << hex_str;
 	uint32_t result;
 	ss >> result;
@@ -71,7 +70,7 @@ string intostr_pretty(int num)
 // Converts an integer into a hex string.
 string itoh(uint32_t num, uint8_t min_len)
 {
-    stringstream ss;
+    std::stringstream ss;
     ss << std::hex << num;
     string hex = ss.str();
     while (min_len && hex.size() < min_len) hex = "0" + hex;
@@ -130,7 +129,7 @@ string number_to_text(int64_t num)
 }
 
 // Converts a string to a bool.
-bool str_to_bool(const std::string& str)
+bool str_to_bool(const string& str)
 {
     if (!str.size()) return false;
     switch (str[0])

@@ -20,7 +20,8 @@ uint32_t array_index(Vector2u position, Vector2u array_size)
 {
     if (position.x >= array_size.x || position.y >= array_size.y)
         throw runtime_error("array_index given invalid coords: " + to_string(position.x) + "," + to_string(position.y));
-    else if (!array_size.x || !array_size.y) throw runtime_error("array_index given invalid array size: " + to_string(array_size.x) + "," + to_string(array_size.y));
+    else if (!array_size.x || !array_size.y)
+        throw runtime_error("array_index given invalid array size: " + to_string(array_size.x) + "," + to_string(array_size.y));
     return (position.y * array_size.x) + position.x;
 }
 

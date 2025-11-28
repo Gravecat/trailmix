@@ -18,7 +18,7 @@ using std::to_string;
 namespace trailmix::text::hash {
 
 // Hashes a string with the djb2 algorithm.
-uint32_t djb2(const std::string& str)
+uint32_t djb2(const string& str)
 {
     uint32_t hash = 5381;
     for (char c : str)
