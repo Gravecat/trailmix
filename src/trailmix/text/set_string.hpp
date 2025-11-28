@@ -1,4 +1,4 @@
-// Templates for converting a std::string to a std::set and back again. I can't remember what I used this for originally.
+// text/set_string.hpp -- Templates for converting a std::string to a std::set and back again. I can't remember what I used this for originally.
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
