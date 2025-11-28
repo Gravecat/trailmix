@@ -12,7 +12,7 @@
 using std::runtime_error;
 using std::to_string;
 
-namespace trailmix {
+namespace trailmix::math::utils {
 
 // Takes X,Y coordinates, and returns a flat array index for the coordinates.
 uint32_t array_index(Vector2u position, Vector2u array_size)
@@ -23,4 +23,4 @@ uint32_t array_index(Vector2u position, Vector2u array_size)
     return (position.y * array_size.x) + position.x;
 }
 
-}   // namespace trailmix
+}   // namespace trailmix::math::utils

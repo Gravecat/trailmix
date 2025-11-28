@@ -8,8 +8,8 @@
 
 #include "trailmix/math/vector2.hpp"
 
-namespace trailmix {
+namespace trailmix::math::utils {
 
 uint32_t    array_index(Vector2u position, Vector2u array_size);    // Takes X,Y coordinates, and returns a flat array index for the coordinates.
 
-}   // namespace trailmix
+}   // namespace trailmix::math::utils

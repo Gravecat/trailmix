@@ -10,9 +10,9 @@
 #include <cstdint>
 #include <functional>
 
-namespace trailmix {
+namespace trailmix::internal {
 
 inline void hash_combine(std::size_t& seed, std::size_t h) noexcept
 { seed ^= h + 0x9e3779b9 + (seed << 6) + (seed >> 2); }
 
-}   // namespace trailmix
+}   // namespace trailmix::internal

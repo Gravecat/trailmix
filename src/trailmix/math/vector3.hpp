@@ -12,7 +12,7 @@
 
 #include "trailmix/internal/hash_combine.hpp"
 
-namespace trailmix {
+namespace trailmix::math {
 
 // Simple three-dimensional integer coordinate struct.
 struct Vector3
@@ -46,14 +46,14 @@ struct Vector3
     int32_t x, y, z;
 };
 
-}   // namespace trailmix
+}   // namespace trailmix::math
 
 // specialise std::hash
 namespace std {
-using trailmix::hash_combine;
-template <> struct hash<trailmix::Vector3>
+using trailmix::internal::hash_combine;
+template <> struct hash<trailmix::math::Vector3>
 {
-    std::size_t operator()(const trailmix::Vector3& v) const noexcept
+    std::size_t operator()(const trailmix::math::Vector3& v) const noexcept
     {
         std::size_t seed = 0;
         hash_combine(seed, std::hash<int32_t>{}(v.x));

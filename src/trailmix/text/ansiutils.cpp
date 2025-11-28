@@ -4,11 +4,11 @@
 #include "trailmix/text/ansiutils.hpp"
 #include "trailmix/text/stringutils.hpp"
 
+using namespace trailmix;
 using std::string;
 using std::vector;
 
-namespace trailmix {
-namespace ansiutils {
+namespace trailmix::text::ansi {
 
 // Strips all ANSI colour tags like {M} from a string.
 string ansi_strip(const string &str)
@@ -31,7 +31,7 @@ size_t ansi_strlen(const string &str)
 vector<string> ansi_vector_split(const string &str, uint32_t line_length)
 {
     string current_line, last_tag;
-    vector<string> result, words = stringutils::string_explode(str, " ");
+    vector<string> result, words = text::utils::string_explode(str, " ");
     uint32_t current_pos = 0;
 
     while(words.size())
@@ -94,4 +94,4 @@ string flatten_tags(const string &str)
     return output;
 }
 
-} } // namespaces ansiutils, trailmix
+}   // namespace trailmix::text::amsi

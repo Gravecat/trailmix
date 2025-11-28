@@ -12,10 +12,10 @@
 using std::ios;
 using std::string;
 using std::vector;
-using trailmix::BinPath;
+using trailmix::sys::BinPath;
 namespace fs = std::filesystem;
 
-namespace trailmix {
+namespace trailmix::file {
 
 // Constructor, opens a binary file.
 FileWriter::FileWriter(const string& filename)
@@ -58,4 +58,4 @@ void FileWriter::write_string(string str)
     file_out_.write(str.c_str(), str.size());
 }
 
-}   // namespace trailmix
+}   // namespace trailmix::file

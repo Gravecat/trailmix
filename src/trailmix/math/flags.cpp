@@ -6,8 +6,7 @@
 
 #include "trailmix/math/flags.hpp"
 
-namespace trailmix {
-namespace flags {
+namespace trailmix::math::flags {
 
 // Checks if a flag is present.
 bool flag_check(uint32_t flags, uint32_t flag_to_check) { return (flags & flag_to_check) == flag_to_check; }
@@ -26,4 +25,4 @@ uint32_t flag_set(uint32_t flags, uint32_t flag_to_set, bool enable)
     else return flag_clear(flags, flag_to_set);
 }
 
-} } // trailmix, flags namespaces
+}   // trailmix::math::flags namespace

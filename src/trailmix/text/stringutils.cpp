@@ -13,8 +13,7 @@ using std::string;
 using std::transform;
 using std::vector;
 
-namespace trailmix {
-namespace stringutils {
+namespace trailmix::text::utils {
 
 // Converts a vector to a comma-separated list.
 string comma_list(vector<string> vec, uint8_t mode)
@@ -166,4 +165,4 @@ string strip_trailing_newlines(string str)
     return str;
 }
 
-} } // stringutils, trailmix namespaces
+}   // namespace trailmix::text::utils

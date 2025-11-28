@@ -33,7 +33,7 @@
 
 using std::string;
 
-namespace trailmix {
+namespace trailmix::sys {
 
 string BinPath::exe_dir;   // The path to the binary.
 
@@ -132,4 +132,4 @@ string BinPath::get_executable_dir()
 string BinPath::merge_paths(const string& pathA, const string& pathB) { return pathA + "/" + pathB; }
 #endif  // TRAILMIX_TARGET_APPLE
 
-}   // namespace trailmix
+}   // namespace trailmix::sys

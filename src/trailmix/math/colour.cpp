@@ -10,8 +10,7 @@
 
 using std::round;
 
-namespace trailmix {
-namespace colour {
+namespace trailmix::math::colour {
 
 // Converts HSB colour to RGB.
 RGB hsb_to_rgb(float hue, float saturation, float brightness)
@@ -41,4 +40,4 @@ RGB hsb_to_rgb(float hue, float saturation, float brightness)
         static_cast<uint8_t>(round(blue * 255.0f)) };
 }
 
-} } // colour, trailmix namespaces
+}   // trailmix::math::colour namespace

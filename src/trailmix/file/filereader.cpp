@@ -17,7 +17,7 @@ using std::to_string;
 using std::vector;
 namespace fs = std::filesystem;
 
-namespace trailmix {
+namespace trailmix::file {
 
 // Loads a data file into memory.
 FileReader::FileReader(string filename, bool allow_missing_file) : read_index_(0)
@@ -77,8 +77,8 @@ void FileReader::standard_error(const string &err, int64_t data, int64_t expecte
 {
     string error_str = err;
     if (data != expected_data) error_str += " (" + to_string(data) + ", expected " + to_string(expected_data) + ")";
-    if (error_sources.size()) error_str += " [" + stringutils::comma_list(error_sources) + "]";
+    if (error_sources.size()) error_str += " [" + text::utils::comma_list(error_sources) + "]";
     throw runtime_error(error_str);
 }
 
-}   // namespace trailmix
+} // trailmix::file namespace

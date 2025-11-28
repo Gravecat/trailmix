@@ -8,8 +8,7 @@
 
 #include <string>
 
-namespace trailmix {
-namespace hash {
+namespace trailmix::text::hash {
 
 uint32_t    murmur3(const std::string& str);   // Hashes a string with MurmurHash3.
 
@@ -19,4 +18,4 @@ uint32_t    murmur3(const std::string& str);   // Hashes a string with MurmurHas
 void        check_hash_collision(const std::string& str, uint32_t hash);
 #endif
 
-} }   // hash, trailmix namespaces
+}   // namespace trailmix::text::hash

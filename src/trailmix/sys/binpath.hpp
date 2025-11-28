@@ -9,7 +9,7 @@
 
 #include <string>
 
-namespace trailmix {
+namespace trailmix::sys {
 
 class BinPath {
 public:
@@ -24,4 +24,4 @@ private:
     static std::string  get_executable_path();  // Platform-agnostic way to find this binary's runtime path.
 };
 
-}   // namespace trailmix
+}   // namespace trailmix::sys

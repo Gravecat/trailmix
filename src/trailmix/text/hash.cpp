@@ -15,8 +15,7 @@
 using std::string;
 using std::to_string;
 
-namespace trailmix {
-namespace hash {
+namespace trailmix::text::hash {
 
 // Hashes a string with MurmurHash3.
 uint32_t murmur3(const string& str)
@@ -50,4 +49,4 @@ void check_hash_collision(const string& str, uint32_t hash)
 }
 #endif  // TRAILMIX_BUILD_DEBUG
 
-} } // hash, trailmix namespaces
+}   // namespace trailmix::text::hash

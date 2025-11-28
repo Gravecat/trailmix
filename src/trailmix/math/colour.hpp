@@ -8,12 +8,11 @@
 
 #include <cstdint>
 
-namespace trailmix {
-namespace colour {
+namespace trailmix::math::colour {
 
 // Simple RGB colour struct.
 struct RGB { uint8_t r, g, b; };
 
 RGB hsb_to_rgb(float hue, float saturation, float brightness);  // Converts HSB colour to RGB.
 
-} } // colour, trailmix namespaces
+}   // trailmix::math::colour namespace

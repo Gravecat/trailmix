@@ -11,8 +11,9 @@ using std::map;
 using std::runtime_error;
 using std::string;
 using std::vector;
+using trailmix::file::utils::file_to_string;
 
-namespace trailmix {
+namespace trailmix::file {
 
 // Blank constructor.
 YAML::YAML() : ref_(nullptr) { }
@@ -93,7 +94,7 @@ map<string, string> YAML::keys_vals() const
 // Loads a YAML file into memory and parse it.
 void YAML::load_file(const string& filename, bool allow_backslash)
 {
-    string file_string = fileutils::file_to_string(filename.c_str());
+    string file_string = file_to_string(filename.c_str());
     // If we don't care about using backslash for... whatever rapidYAML does with them, just turn them into double-backslashes so they're treated as a
     // string literal of \ instead of... I don't know, it's probably used for writing hex or octal or some shit.
     if (!allow_backslash)
@@ -124,4 +125,4 @@ string YAML::val(const string& key) const
     return string(noderef()[cskey].val().str).substr(0, noderef()[cskey].val().len);
 }
 
-}   // namespace trailmix
+}   // namespace trailmix::file

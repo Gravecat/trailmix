@@ -9,10 +9,9 @@
 #include <string>
 #include <vector>
 
-namespace trailmix {
-namespace fileutils {
+namespace trailmix::file::utils {
 
-std::string                 file_to_string(const std::string& filename);    // Loads a text file into an std::string.
-std::vector<std::string>    file_to_vec(const std::string& filename);       // Loads a text file into a vector, one string for each line of the file.
+std::string file_to_string(const std::string& filename);    // Loads a text file into an std::string.
+std::vector<std::string>    file_to_vec(const std::string& filename);   // Loads a text file into a vector, one string for each line of the file.
 
-} } // fileutils, trailmix namespaces
+}   // trailmix::file::utils namespace

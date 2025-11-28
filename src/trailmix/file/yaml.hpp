@@ -10,7 +10,7 @@
 
 #include "3rdparty/rapidyaml/rapidyaml-0.10.0.hpp"
 
-namespace trailmix {
+namespace trailmix::file {
 
 class YAML {
 public:
@@ -38,4 +38,4 @@ private:
     ryml::Tree          tree_;  // The parsed YAML data.
 };
 
-}   // namespace trailmix
+}   // namespace trailmix::file

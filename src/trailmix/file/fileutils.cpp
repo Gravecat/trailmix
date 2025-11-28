@@ -17,8 +17,7 @@ using std::stringstream;
 using std::vector;
 namespace fs = std::filesystem;
 
-namespace trailmix {
-namespace fileutils {
+namespace trailmix::file::utils {
 
 // Loads a text file into an std::string.
 string file_to_string(const string& filename)
@@ -50,4 +49,4 @@ vector<string> file_to_vec(const string& filename)
     return lines;
 }
 
-} } // fileutils, trailmix namespaces
+} // trailmix::file::utils namespace

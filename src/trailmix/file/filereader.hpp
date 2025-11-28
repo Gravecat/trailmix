@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace trailmix {
+namespace trailmix::file {
 
 class FileReader {
 public:
@@ -41,4 +41,4 @@ private:
     uint32_t            read_index_;    // The current read position in the file.
 };
 
-}   // namespace trailmix
+}   // trailmix::file namespace

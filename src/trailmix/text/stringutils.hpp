@@ -10,8 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace trailmix {
-namespace stringutils {
+namespace trailmix::text::utils {
 
 static constexpr uint8_t CL_MODE_USE_AND = 1;   // Use 'and' for the last entry in comma_list().
 static constexpr uint8_t CL_MODE_USE_OR =  2;   // Use 'or' for the last entry in comma_list();
@@ -24,4 +23,4 @@ std::string str_tolower(std::string str);   // Converts a string to lower-case.
 std::vector<std::string>    string_explode(std::string str, const std::string& separator = " ");    // String split/explode function.
 std::string strip_trailing_newlines(std::string str);   // Strips trailing newlines from a given string.
 
-} } // stringutils, trailmix namespaces
+}   // namespace trailmix::text::utils

@@ -10,7 +10,7 @@
 #include <fstream>
 #include <vector>
 
-namespace trailmix {
+namespace trailmix::file {
 
 class FileWriter {
 public:
@@ -30,4 +30,4 @@ private:
     std::ofstream   file_out_;  // File handle for writing into the binary data file.
 };
 
-}   // namespace trailmix
+}   // namespace trailmix::file
