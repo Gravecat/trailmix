@@ -35,4 +35,7 @@ double round_to(double num, unsigned int digits)
     return rounded / power;
 }
 
+// Rounds a float to two decimal places. Quicker than calling round_to(..., 2)
+float round_to_two(float num) { return ::floorf(num * 100 + 0.5) / 100; }
+
 }   // namespace trailmix::math::conversion
