@@ -8,7 +8,7 @@
 #include <fstream>
 
 #include "trailmix/file/filereader.hpp"
-#include "trailmix/text/stringutils.hpp"
+#include "trailmix/text/formatting.hpp"
 
 using std::ios;
 using std::runtime_error;
@@ -77,7 +77,7 @@ void FileReader::standard_error(const string &err, int64_t data, int64_t expecte
 {
     string error_str = err;
     if (data != expected_data) error_str += " (" + to_string(data) + ", expected " + to_string(expected_data) + ")";
-    if (error_sources.size()) error_str += " [" + text::utils::comma_list(error_sources) + "]";
+    if (error_sources.size()) error_str += " [" + text::formatting::comma_list(error_sources) + "]";
     throw runtime_error(error_str);
 }
 
