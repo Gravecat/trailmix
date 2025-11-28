@@ -17,6 +17,19 @@ namespace fs = std::filesystem;
 
 namespace trailmix::file::utils {
 
+// Simple CRC32 implementation.
+uint32_t crc32c(uint32_t crc, const unsigned char* buf, size_t len)
+{
+    crc = ~crc;
+    while(len--)
+    {
+        crc ^= *buf++;
+        for (int k = 0; k < 8; k++)
+            crc = crc & 1 ? (crc >> 1) ^ 0x82f63b78 : crc >> 1;
+    }
+    return ~crc;
+}
+
 // Loads a text file into an std::string.
 string file_to_string(const string& filename)
 {

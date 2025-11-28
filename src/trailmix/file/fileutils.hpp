@@ -6,11 +6,13 @@
 
 #pragma once
 
+#include <cstdint>
 #include <string>
 #include <vector>
 
 namespace trailmix::file::utils {
 
+uint32_t    crc32c(uint32_t crc, const unsigned char* buf, size_t len); // Simple CRC32 implementation.
 std::string file_to_string(const std::string& filename);    // Loads a text file into an std::string.
 std::vector<std::string>    file_to_vec(const std::string& filename);   // Loads a text file into a vector, one string for each line of the file.
 
