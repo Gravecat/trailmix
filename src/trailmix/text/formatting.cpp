@@ -113,6 +113,14 @@ string strip(string str, char to_remove)
     return str;
 }
 
+// Strips all spaces from within a string.
+string strip_spaces(string input)
+{
+    string::iterator end_pos = std::remove(input.begin(), input.end(), ' ');
+    input.erase(end_pos, input.end());
+    return input;
+}
+
 // Strips trailing newlines from a given string.
 string strip_trailing_newlines(string str)
 {
