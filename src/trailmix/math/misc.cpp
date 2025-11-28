@@ -35,6 +35,9 @@ float distance_between(const Vector2& start, const Vector2& end)
     return std::sqrt(dx * dx + dy * dy);
 }
 
+// Interpolates between two floating point values.
+double lerp(double a, double b, double f) { return (a * (1.0f - f)) + (b * f); }
+
 // Mixes up an integer a little.
 uint32_t mixup(unsigned int num, bool big_mix)
 {
