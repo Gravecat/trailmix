@@ -5,6 +5,7 @@
 // SPDX-License-Identifier: MIT
 
 #include <algorithm>
+#include <numeric>
 
 #include "trailmix/text/manipulation.hpp"
 
@@ -42,7 +43,7 @@ string decode_compressed_string(string cb)
 }
 
 // Find and replace one string with another.
-bool find_and_replace(string &input, const string &to_find, const string &to_replace)
+bool find_and_replace(string& input, const string& to_find, const string& to_replace)
 {
     string::size_type pos = 0;
     const string::size_type find_len = to_find.length(), replace_len = to_replace.length();
@@ -56,6 +57,10 @@ bool find_and_replace(string &input, const string &to_find, const string &to_rep
     }
     return found;
 }
+
+// Takes a vector of strings and squashes them into one string.
+string join_words(vector<string> vec, const string& spacer)
+{ return std::accumulate(vec.begin() + 1, vec.end(), vec[0], [&spacer](const std::string& a, const std::string& b) { return a + spacer + b; }); }
 
 // String split/explode function.
 vector<string> string_explode(string str, const string& separator)
