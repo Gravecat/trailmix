@@ -25,6 +25,16 @@ string ftos(double num, int precision)
     return ss.str();
 }
 
+// Converts a hex string into an integer.
+uint32_t htoi(const string& hex_str)
+{
+	std::stringstream ss;
+	ss << std::hex << hex_str;
+	uint32_t result;
+	ss >> result;
+	return result;
+}
+
 // Converts a number (e.g. 123) into a string (e.g. "one hundred and twenty-three").
 string number_to_text(int64_t num)
 {
