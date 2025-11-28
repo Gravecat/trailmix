@@ -14,6 +14,9 @@ using std::string;
 
 namespace trailmix::text::conversion {
 
+// Converts a bool to a string ("true" or "false").
+string bool_to_str(bool b) { return (b ? "true" : "false"); }
+
 // Converts a float or double to a string.
 string ftos(double num, int precision)
 {
