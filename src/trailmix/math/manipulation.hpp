@@ -10,6 +10,7 @@
 
 namespace trailmix::math::manipulation {
 
+uint32_t    fuzz(uint32_t num); // Fuzzes a number, giving an estimate (e.g. 123456 becoomes 100000).
 double      lerp(double a, double b, double f); // Interpolates between two floating point values.
 uint32_t    mixup(unsigned int num, bool big_mix = false);  // Mixes up an integer a little.
 
