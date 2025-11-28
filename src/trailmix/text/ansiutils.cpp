@@ -2,9 +2,8 @@
 // for marking where ANSI colour codes will be inserted into text.
 
 #include "trailmix/text/ansiutils.hpp"
-#include "trailmix/text/stringutils.hpp"
+#include "trailmix/text/manipulation.hpp"
 
-using namespace trailmix;
 using std::string;
 using std::vector;
 
@@ -31,7 +30,7 @@ size_t ansi_strlen(const string &str)
 vector<string> ansi_vector_split(const string &str, uint32_t line_length)
 {
     string current_line, last_tag;
-    vector<string> result, words = text::utils::string_explode(str, " ");
+    vector<string> result, words = text::manipulation::string_explode(str, " ");
     uint32_t current_pos = 0;
 
     while(words.size())

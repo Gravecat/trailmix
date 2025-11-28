@@ -43,7 +43,7 @@ set(TRAILMIX_CPPS
   src/trailmix/text/conversion.cpp
   src/trailmix/text/formatting.cpp
   src/trailmix/text/hash.cpp
-  src/trailmix/text/stringutils.cpp
+  src/trailmix/text/manipulation.cpp
   $<$<BOOL:${TRAILMIX_ALL_EXTRAS}>:src/trailmix/internal/test-headers.cpp>
   $<$<BOOL:${TRAILMIX_HASH}>:src/trailmix/text/hash.cpp>
   $<$<BOOL:${TRAILMIX_YAML}>:src/trailmix/file/yaml.cpp>

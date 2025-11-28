@@ -1,4 +1,4 @@
-// text/stringutils.cpp -- Various utility functions that deal with string manipulation/conversion.
+// text/manipulation.cpp -- Various miscellaneous utility functions that deal with string manipulation.
 
 // SPDX-FileType: SOURCE
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
@@ -6,14 +6,13 @@
 
 #include <algorithm>
 
-#include "trailmix/text/ansiutils.hpp"
-#include "trailmix/text/stringutils.hpp"
+#include "trailmix/text/manipulation.hpp"
 
 using std::string;
 using std::transform;
 using std::vector;
 
-namespace trailmix::text::utils {
+namespace trailmix::text::manipulation {
 
 // Decodes a compressed string (e.g. 4cab2z becomes ccccabzz).
 string decode_compressed_string(string cb)
@@ -78,4 +77,4 @@ vector<string> string_explode(string str, const string& separator)
     return results;
 }
 
-}   // namespace trailmix::text::utils
+}   // namespace trailmix::text::manipulation
