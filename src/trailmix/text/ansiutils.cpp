@@ -9,8 +9,10 @@
 #include <stdexcept>
 
 #include "trailmix/text/ansiutils.hpp"
+#include "trailmix/text/comparison.hpp"
 #include "trailmix/text/manipulation.hpp"
 
+using namespace trailmix::text::comparison;
 using namespace trailmix::text::manipulation;
 using std::runtime_error;
 using std::string;
@@ -233,6 +235,71 @@ string rainbow_text(const string& str, const string& colours)
         else if (position < 0) { position = 5; direction = 5; }
     }
 
+    return output;
+}
+
+// Similar to string_explode(), but takes colour tags into account, and wraps to a given line length.
+vector<string> string_explode_colour(const string& str, unsigned int line_len, const string& default_colour)
+{
+    vector<string> output;
+    if (!str.size()) return output;
+
+    // Check to see if the line is too short to be worth splitting.
+    if (ansi_strlen(str) <= line_len)
+    {
+        output.push_back(str);
+        return output;
+    }
+
+    // Split the string into individual words.
+    vector<string> words = string_explode(str, " ");
+
+    // Keep track of the current line and our position on it.
+    unsigned int current_line = 0, line_pos = 0;
+    string last_colour = default_colour;    // The last colour tag we encountered; white by default.
+
+    // Start with an empty string.
+    output.push_back("");
+
+    for (auto word : words)
+    {
+        unsigned int length = word.length();    // Find the length of the word.
+
+        const int colour_count = word_count(word, "{"); // Count the colour tags.
+        if (colour_count) length -= (colour_count * 3); // Reduce the length if one or more colour tags are found.
+        if (length + line_pos >= line_len)  // Is the word too long for the current line?
+        {
+            line_pos = 0; current_line++;   // CR;LF
+            output.push_back(last_colour);  // Start the line with the last colour tag we saw.
+        }
+        if (colour_count)
+        {
+            // Duplicate the last-used colour tag.
+            const string::size_type flo = word.find_last_of("{");
+            if (flo != string::npos && word.size() >= flo + 3) last_colour = word.substr(flo, 3);
+        }
+        if (line_pos != 0)  // NOT the start of a new line?
+        {
+            length++;
+            output.at(current_line) += " ";
+        }
+
+        // Is the word STILL too long to fit over a single line?
+        while (length > line_len)
+        {
+            const string trunc = word.substr(0, line_len);
+            word = word.substr(line_len);
+            output.at(current_line) += trunc;
+            line_pos = 0;
+            current_line++;
+            output.push_back(last_colour);  // Start the line with the last colour tag we saw.
+            length = word.size();   // Adjusts the length for what we have left over.
+        }
+        output.at(current_line) += word;
+        line_pos += length;
+    }
+
+    if (output.size() && output.at(0)[0] != '{') output.at(0) = default_colour + output.at(0);
     return output;
 }
 

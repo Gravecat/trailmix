@@ -24,5 +24,7 @@ std::vector<std::string>    ansi_vector_split(const std::string& str, uint32_t l
 std::string flatten_tags(const std::string& str);   // 'Flattens' ANSI tags, by erasing redundant tags in the string.
 std::string generate_bar(BarType type, float num, float num_max, int width);    // Generates a bar of the specified type.
 std::string rainbow_text(const std::string& str, const std::string& colours);   // Makes pretty rainbow text!
+                            // Similar to string_explode(), but takes colour tags into account, and wraps to a given line length.
+std::vector<std::string>    string_explode_colour(const std::string& str, unsigned int line_len, const std::string& default_colour = "{w}");
 
 }   // namespace trailmix::text::ansi
