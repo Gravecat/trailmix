@@ -10,10 +10,10 @@
 #include <utility>
 #include <vector>
 
-#include "trailmix/math/misc.hpp"
+#include "trailmix/math/comparison.hpp"
 #include "trailmix/math/voronoi.hpp"
 
-using namespace trailmix::math::misc;
+using namespace trailmix::math::comparison;
 using std::vector;
 
 namespace trailmix::math {
