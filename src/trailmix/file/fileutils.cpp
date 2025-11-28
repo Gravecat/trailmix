@@ -4,7 +4,6 @@
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 // SPDX-License-Identifier: MIT
 
-#include <filesystem>
 #include <fstream>
 #include <sstream>
 
@@ -69,6 +68,30 @@ vector<string> file_to_vec(const string& filename)
     }
     file.close();
     return lines;
+}
+
+// Returns a list of files in a given directory.
+vector<string> files_in_dir(const fs::path& directory, bool recursive)
+{
+    std::vector<std::string> names;
+    auto push = [&](const fs::directory_entry& entry)
+    {
+        if (!entry.is_regular_file()) return;
+        fs::path rel = recursive ? fs::relative(entry.path(), directory) : entry.path().filename();
+        names.push_back(rel.string());
+    };
+
+    if (recursive)
+    {
+        for (const auto& e : fs::recursive_directory_iterator(directory))
+            push(e);
+    }
+    else
+    {
+        for (const auto& e : fs::directory_iterator(directory))
+            push(e);
+    }
+    return names;
 }
 
 } // trailmix::file::utils namespace
