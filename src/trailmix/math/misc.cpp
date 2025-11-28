@@ -18,7 +18,7 @@ using std::to_string;
 namespace trailmix::math::misc {
 
 // Takes X,Y coordinates, and returns a flat array index for the coordinates.
-uint32_t array_index(Vector2u position, Vector2u array_size)
+uint32_t array_index(const Vector2u& position, const Vector2u& array_size)
 {
     if (position.x >= array_size.x || position.y >= array_size.y)
         throw runtime_error("array_index given invalid coords: " + to_string(position.x) + "," + to_string(position.y));
