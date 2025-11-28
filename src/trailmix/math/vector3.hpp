@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <functional>
 #include <initializer_list>
+#include <string>
 
 #include "trailmix/internal/hash_combine.hpp"
 
@@ -47,6 +48,9 @@ struct Vector3
 
     explicit operator Vector3u() const noexcept;    // Allows Vector3 to static_cast into Vector3 (beware of signed -> unsigned integer conversions)
 
+    // Allows this Vector3 to return its coordinates in string form.
+    const std::string   string() const { return std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z); }
+
     int32_t x, y, z;
 };
 
@@ -81,6 +85,9 @@ struct Vector3u
 
     // Allows implicit conversion of Vector3u into Vector3 (beware of unsigned -> signed integer conversions)
     operator Vector3() const noexcept { return { static_cast<int32_t>(x), static_cast<int32_t>(y) }; }
+
+    // Allows this Vector3u to return its coordinates in string form.
+    const std::string   string() const { return std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z); }
 
     uint32_t x, y, z;
 };
