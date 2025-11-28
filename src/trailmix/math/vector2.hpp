@@ -14,6 +14,8 @@
 
 namespace trailmix::math {
 
+struct Vector2u;    // Forward declaration, for explicit conversion of Vector2 to Vector2u.
+
 // Simple two-dimensional integer coordinate struct.
 struct Vector2
 {
@@ -41,6 +43,8 @@ struct Vector2
     template<typename T> Vector2    operator/(const T other) const { return {x / other, y / other}; }
     template<typename T> Vector2    operator*(const T other) const { return {x * other, y * other}; }
     template<typename T> Vector2    operator%(const T other) const { return {x % other, y % other}; }
+
+    explicit operator Vector2u() const noexcept;    // Allows Vector2 to static_cast into Vector2 (beware of signed -> unsigned integer conversions)
 
     int32_t x, y;
 };
@@ -72,6 +76,9 @@ struct Vector2u
     template<typename T> Vector2u   operator/(const T other) const { return {x / other, y / other}; }
     template<typename T> Vector2u   operator*(const T other) const { return {x * other, y * other}; }
     template<typename T> Vector2u   operator%(const T other) const { return {x % other, y % other}; }
+
+    // Allows implicit conversion of Vector2u into Vector2 (beware of unsigned -> signed integer conversions)
+    operator Vector2() const noexcept { return { static_cast<int32_t>(x), static_cast<int32_t>(y) }; }
 
     uint32_t x, y;
 };
