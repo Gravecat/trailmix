@@ -9,6 +9,26 @@ using std::vector;
 
 namespace trailmix::text::ansi {
 
+// Centres all the strings in a vector.
+uint32_t ansi_centre_strvec(vector<string> &vec)
+{
+    uint32_t longest = 0;
+    for (auto line : vec)
+    {
+        unsigned int len = ansi_strlen(line);
+        if (len > longest) longest = len;
+    }
+    for (unsigned int i = 0; i < vec.size(); i++)
+    {
+        int to_add = longest - ansi_strlen(vec.at(i));
+        if (!to_add) continue;
+        int add_front = to_add / 2;
+        int add_back = to_add - add_front;
+        vec.at(i) = string(add_front, ' ') + vec.at(i) + string(add_back, ' ');
+    }
+    return longest;
+}
+
 // Strips all ANSI colour tags like {M} from a string.
 string ansi_strip(const string &str)
 {
@@ -64,26 +84,6 @@ vector<string> ansi_vector_split(const string &str, uint32_t line_length)
     }
     if (current_line.size()) result.push_back(current_line);
     return result;
-}
-
-// Centres all the strings in a vector.
-uint32_t centre_strvec(vector<string> &vec)
-{
-    uint32_t longest = 0;
-    for (auto line : vec)
-    {
-        unsigned int len = ansi_strlen(line);
-        if (len > longest) longest = len;
-    }
-    for (unsigned int i = 0; i < vec.size(); i++)
-    {
-        int to_add = longest - ansi_strlen(vec.at(i));
-        if (!to_add) continue;
-        int add_front = to_add / 2;
-        int add_back = to_add - add_front;
-        vec.at(i) = string(add_front, ' ') + vec.at(i) + string(add_back, ' ');
-    }
-    return longest;
 }
 
 // 'Flattens' ANSI tags, by erasing redundant tags in the string.
