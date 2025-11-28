@@ -37,6 +37,7 @@ set(TRAILMIX_CPPS
   src/trailmix/math/flags.cpp
   src/trailmix/math/mathutils.cpp
   src/trailmix/math/poisson.cpp
+  src/trailmix/math/scientific-notation.cpp
   src/trailmix/sys/binpath.cpp
   src/trailmix/sys/process.cpp
   src/trailmix/text/ansiutils.cpp
