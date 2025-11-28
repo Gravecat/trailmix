@@ -12,9 +12,31 @@
 
 using namespace trailmix::text::conversion;
 using std::string;
+using std::to_string;
 using std::vector;
 
 namespace trailmix::text::manipulation {
+
+// Collapses a string vector list, combining duplicates.
+void collapse_list(vector<string>& vec)
+{
+    if (vec.size() < 2) return;
+    for (unsigned int i = 0; i < vec.size(); i++)
+    {
+        string entry = vec.at(i);
+        int total_count = 1;
+        for (unsigned int j = i + 1; j < vec.size(); j++)
+        {
+            if (vec.at(j) == entry)
+            {
+                total_count++;
+                vec.erase(vec.begin() + j);
+                j--;
+            }
+        }
+        if (total_count > 1) vec.at(i) = entry + " (" + to_string(total_count) + ")";
+    }
+}
 
 // Decodes a compressed string (e.g. 4cab2z becomes ccccabzz).
 string decode_compressed_string(string cb)

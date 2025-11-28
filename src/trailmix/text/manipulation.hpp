@@ -12,6 +12,7 @@
 
 namespace trailmix::text::manipulation {
 
+void        collapse_list(std::vector<std::string>& vec);   // Collapses a string vector list, combining duplicates.
 std::string decode_compressed_string(std::string cb);   // Decodes a compressed string (e.g. 4cab2z becomes ccccabzz).
 bool        find_and_replace(std::string& input, const std::string& to_find, const std::string& to_replace);    // Find and replace one string with another.
 std::string join_words(std::vector<std::string> vec, const std::string& spacer = " ");  // Takes a vector of strings and squashes them into one string.
