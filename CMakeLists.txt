@@ -42,6 +42,7 @@ set(TRAILMIX_CPPS
   src/trailmix/sys/binpath.cpp
   src/trailmix/sys/process.cpp
   src/trailmix/text/ansiutils.cpp
+  src/trailmix/text/comparison.cpp
   src/trailmix/text/conversion.cpp
   src/trailmix/text/formatting.cpp
   src/trailmix/text/hash.cpp
