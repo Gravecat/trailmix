@@ -11,6 +11,7 @@
 namespace trailmix::text::hash {
 
 uint32_t    djb2(const std::string& str);       // Hashes a string with the djb2 algorithm.
+uint32_t    fnv(const std::string& str);        // Hashes a string with the FNV algorithm.
 uint32_t    murmur3(const std::string& str);    // Hashes a string with MurmurHash3.
 
 // Only in debug builds, we're gonna add some extra code to detect hash collisions in real-time. Yes, it'll slow performance by a tiny amount, but it's a

@@ -31,6 +31,21 @@ uint32_t djb2(const string& str)
     return hash;
 }
 
+// Hashes a string with the FNV algorithm.
+uint32_t fnv(const std::string& str)
+{
+    uint32_t result = 2166136261U;
+    std::string::const_iterator end = str.end();
+    for (std::string::const_iterator iter = str.begin(); iter != end; ++iter)
+        result = 127 * result + static_cast<unsigned char>(*iter);
+
+#ifdef TRAILMIX_BUILD_DEBUG
+    check_hash_collision(str, result);
+#endif
+
+    return result;
+}
+
 // Hashes a string with MurmurHash3.
 uint32_t murmur3(const string& str)
 {
