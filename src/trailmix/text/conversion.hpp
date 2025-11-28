@@ -17,6 +17,7 @@ std::string     collapse_vector(std::vector<std::string> vec);  // Simple functi
 std::string     collapse_vector(std::vector<int> vec);  // As above, but for an integer vector.
 std::string     ftos(double num, int precision = 1);    // Converts a float or double to a string.
 uint32_t        htoi(const std::string& hex_str);       // Converts a hex string into an integer.
+std::string     intoroman(unsigned short number);       // Converts a number into Roman numerals.
 std::string     intostr_pretty(int num);                // Returns a 'pretty' version of a number in string format, such as "12,345".
 std::string     intostr_pretty_u64(uint64_t num);       // Unsigned 64-bit version.
 std::string     intostr_sign(int num);                  // Converts a nummber (like 5 or -3) to one that always has a sign (e.g. +5 or -3).
