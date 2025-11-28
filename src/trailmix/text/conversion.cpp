@@ -91,6 +91,13 @@ string intostr_pretty_u64(uint64_t num)
     return result;
 }
 
+// Converts a nummber (like 5 or -3) to one that always has a sign (e.g. +5 or -3).
+string intostr_sign(int num)
+{
+    if (num < 0) return intostr_pretty(num);
+    else return "+" + intostr_pretty(num);
+}
+
 // Converts an integer into a hex string.
 string itoh(uint32_t num, uint8_t min_len)
 {
