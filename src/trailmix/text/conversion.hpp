@@ -21,6 +21,7 @@ std::string     intostr_pretty(int num);                // Returns a 'pretty' ve
 std::string     intostr_pretty_u64(uint64_t num);       // Unsigned 64-bit version.
 std::string     intostr_sign(int num);                  // Converts a nummber (like 5 or -3) to one that always has a sign (e.g. +5 or -3).
 std::string     itoh(uint32_t num, uint8_t min_len);    // Converts an integer into a hex string.
+std::string     itos(uint32_t num, size_t min_len);     // Converts an integer to a string, but optionally pads it to a minimum length with leading zeroes.
 std::string     number_to_text(int64_t num);            // Converts a number (e.g. 123) into a string (e.g. "one hundred and twenty-three").
 bool            str_to_bool(const std::string& str);    // Converts a string to a bool.
 std::wstring    to_wstring(const std::string& str);     // Converts a string to a wstring.

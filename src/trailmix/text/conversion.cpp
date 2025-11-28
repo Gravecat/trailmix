@@ -131,6 +131,14 @@ string itoh(uint32_t num, uint8_t min_len)
     return hex;
 }
 
+// Converts an integer to a string, but optionally pads it to a minimum length with leading zeroes.
+string itos(uint32_t num, size_t min_len)
+{
+    string result = to_string(num);
+    while (result.size() < min_len) result = "0" + result;
+    return result;
+}
+
 // Converts a number (e.g. 123) into a string (e.g. "one hundred and twenty-three").
 string number_to_text(int64_t num)
 {
