@@ -4,12 +4,14 @@
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 // SPDX-License-Identifier: MIT
 
-#include "trailmix/math/mathutils.hpp"
-
 #include <cmath>
 #include <stdexcept>
 #include <string>
 
+#include "trailmix/math/mathutils.hpp"
+#include "trailmix/math/random.hpp"
+
+using namespace trailmix::math;
 using std::runtime_error;
 using std::to_string;
 
@@ -31,6 +33,16 @@ float distance_between(const Vector2& start, const Vector2& end)
     const float dx = float(start.x - end.x);
     const float dy = float(start.y - end.y);
     return std::sqrt(dx * dx + dy * dy);
+}
+
+// Mixes up an integer a little.
+uint32_t mixup(unsigned int num, bool big_mix)
+{
+    int64_t variance = num / (big_mix ? 2 : 10);
+    if (variance <= 0) variance = 1;
+    uint32_t result = static_cast<uint32_t>(num) + random::get<int>(0, variance * 2) - variance;
+    if (result < 1) result = 1;
+    return result;
 }
 
 // Rotates cartesian coordinates by a specified number of radians.
