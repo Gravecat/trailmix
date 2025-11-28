@@ -7,9 +7,11 @@
 #include <algorithm>
 #include <iomanip>
 #include <sstream>
+#include <stdexcept>
 
 #include "trailmix/text/conversion.hpp"
 
+using std::runtime_error;
 using std::string;
 using std::stringstream;
 
@@ -125,6 +127,18 @@ string number_to_text(int64_t num)
         group++;
     }
     return (negative ? "minus " : "") + output;
+}
+
+// Converts a string to a bool.
+bool str_to_bool(const std::string& str)
+{
+    if (!str.size()) return false;
+    switch (str[0])
+    {
+        case '0': case 'f': case 'F': case 'n': case 'N': case '-': return false;
+        case '1': case 't': case 'T': case 'y': case 'Y': return true;
+        default: throw runtime_error("Invalid boolean string: " + str);
+    }
 }
 
 }   // namespace trailmix::text::conversion
