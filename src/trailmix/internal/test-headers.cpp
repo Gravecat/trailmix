@@ -7,3 +7,4 @@
 #include "trailmix/math/rect.hpp"
 #include "trailmix/math/vector2.hpp"
 #include "trailmix/math/vector3.hpp"
+#include "trailmix/text/set-string.hpp"
