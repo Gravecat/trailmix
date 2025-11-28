@@ -22,5 +22,6 @@ std::string     file_to_string(const std::string& filename);    // Loads a text 
 std::vector<std::string>    file_to_vec(const std::string& filename);   // Loads a text file into a vector, one string for each line of the file.
 std::vector<std::string>    files_in_dir(const std::filesystem::path& directory, bool recursive = false);   // Returns a list of files in a given directory.
 std::string     random_line(std::string& filename, unsigned int lines = 0); // Returns a random line from a text file.
+void            touch(const std::string& file); // Creates an empty placeholder file.
 
 }   // trailmix::file::utils namespace

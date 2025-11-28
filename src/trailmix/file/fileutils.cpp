@@ -4,6 +4,7 @@
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 // SPDX-License-Identifier: MIT
 
+#include <cstdio>
 #include <fstream>
 #include <sstream>
 #include <sys/stat.h>
@@ -134,6 +135,20 @@ string random_line(string &filename, unsigned int lines)
     }
     text_file.close();
     return "";  // error
+}
+
+// Creates an empty placeholder file.
+void touch(const std::string& file)
+{
+    if (fs::exists(file)) return;
+    FILE* fptr = nullptr;
+#ifdef TRAILMIX_TARGET_WINDOWS
+    errno_t err = ::fopen_s(&fptr, file.c_str(), "wb");
+    (void)err;
+#else
+	fptr = std::fopen(file.c_str(), "wb");
+#endif
+	std::fclose(fptr);
 }
 
 } // trailmix::file::utils namespace
