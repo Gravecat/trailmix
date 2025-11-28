@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <regex>
 
 #include "trailmix/text/ansiutils.hpp"
 #include "trailmix/text/formatting.hpp"
@@ -110,5 +111,8 @@ string strip_trailing_newlines(string str)
         str.pop_back();
     return str;
 }
+
+// Trims out leading, trailing, and excess (more than one at a time) spaces from a string.
+string trim_excess_spaces(const string& source) { return std::regex_replace(source, std::regex("^ +| +$|( ) +"), "$1"); }
 
 }   // namespace trailmix::text::formatting
