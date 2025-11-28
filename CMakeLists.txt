@@ -38,6 +38,7 @@ set(TRAILMIX_CPPS
   src/trailmix/math/conversion.cpp
   src/trailmix/math/flags.cpp
   src/trailmix/math/manipulation.cpp
+  src/trailmix/math/perlin.cpp
   src/trailmix/math/poisson.cpp
   src/trailmix/math/prand.cpp
   src/trailmix/math/random.cpp
