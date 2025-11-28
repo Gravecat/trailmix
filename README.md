@@ -14,6 +14,12 @@ even get removed entirely in future commits.
 
 Copyright © 2025 Raine "Gravecat" Simmons \<gc@gravecat.com\>
 
+[MurmurHash3](https://github.com/aappleby/smhasher/tree/master) by Austin Appleby.
+
+[Random for modern C++](https://github.com/ilqvya/random) copyright © 2017-2023 effolkronium (Illia Polishchuk).
+
+[Rapid YAML](https://github.com/biojppm/rapidyaml) copyright © 2018 Joao Paulo Magalhaes (<dev@jpmag.me>).
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -31,12 +37,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-## Other Included Libraries
-
-[MurmurHash3](https://github.com/aappleby/smhasher/tree/master) by Austin Appleby.
-
-[Random for modern C++](https://github.com/ilqvya/random) copyright © 2017-2023 effolkronium (Illia Polishchuk).
-
-[Rapid YAML](https://github.com/biojppm/rapidyaml) copyright © 2018 Joao Paulo Magalhaes (<dev@jpmag.me>).
