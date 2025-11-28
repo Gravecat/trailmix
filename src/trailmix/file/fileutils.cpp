@@ -27,6 +27,16 @@ unsigned int count_lines(const string& file)
     return count;
 }
 
+// Counts the number of lines in all files in a directory.
+unsigned int count_lines_in_dir(const std::filesystem::path& dir, bool recursive)
+{
+    unsigned int count = 0;
+    vector<string> files = files_in_dir(dir, recursive);
+    for (auto &file : files)
+        count += count_lines(dir.string() + "/" + file);
+    return count;
+}
+
 // Simple CRC32 implementation.
 uint32_t crc32c(uint32_t crc, const unsigned char* buf, size_t len)
 {
