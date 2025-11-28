@@ -4,13 +4,14 @@
 #include "trailmix/text/ansiutils.hpp"
 #include "trailmix/text/manipulation.hpp"
 
+using namespace trailmix::text::manipulation;
 using std::string;
 using std::vector;
 
 namespace trailmix::text::ansi {
 
 // Centres all the strings in a vector.
-uint32_t ansi_centre_strvec(vector<string> &vec)
+uint32_t ansi_centre_strvec(vector<string>& vec)
 {
     uint32_t longest = 0;
     for (auto line : vec)
@@ -29,8 +30,81 @@ uint32_t ansi_centre_strvec(vector<string> &vec)
     return longest;
 }
 
+// String split/explode function, handles ANSI colour tags.
+vector<string> ansi_string_explode(const string& str, unsigned int line_len)
+{
+    vector<string> output;
+
+    // Check to see if the line of text has the no-split tag at the start.
+    if (str.size() >= 3)
+    {
+        if (!str.substr(0, 3).compare("{_}"))
+        {
+            output.push_back(str.substr(3));
+            return output;
+        }
+    }
+
+    // Check to see if the line is too short to be worth splitting.
+    if (ansi_strlen(str) <= line_len)
+    {
+        output.push_back(str);
+        return output;
+    }
+
+    // Split the string into individual words.
+    vector<string> words = string_explode(str, " ");
+
+    // Keep track of the current line and our position on it.
+    unsigned int current_line = 0, line_pos = 0;
+    string last_colour = "{0}";    // The last colour tag we encountered; ANSI reset code by default.
+
+    // Start with an empty string.
+    output.push_back("");
+
+    for (auto word : words)
+    {
+        unsigned int length = ansi_strlen(word);    // Find the length of the word, without ANSI tags.
+
+        if (length + line_pos >= line_len)  // Is the word too long for the current line?
+        {
+            line_pos = 0; current_line++;   // CR;LF
+            if (last_colour != "{0}") output.push_back(last_colour);    // Start the line with the last colour tag we saw, if any.
+            else output.push_back("");
+        }
+        size_t open_tag = word.find_last_of('{'), close_tag;
+        if (open_tag != string::npos)
+        {
+            // Duplicate the last-used colour tag.
+            close_tag = word.find_last_of('}');
+            if (close_tag != string::npos) last_colour = word.substr(open_tag, (close_tag - open_tag + 1));
+        }
+        if (line_pos != 0)  // NOT the start of a new line?
+        {
+            length++;
+            output.at(current_line) += " ";
+        }
+
+        // Is the word STILL too long to fit over a single line?
+        while (length > line_len)
+        {
+            const string trunc = word.substr(0, line_len);
+            word = word.substr(line_len);
+            output.at(current_line) += trunc;
+            line_pos = 0;
+            current_line++;
+            output.push_back(last_colour);  // Start the line with the last colour tag we saw.
+            length = word.size();   // Adjusts the length for what we have left over.
+        }
+        output.at(current_line) += word;
+        line_pos += length;
+    }
+
+    return output;
+}
+
 // Strips all ANSI colour tags like {M} from a string.
-string ansi_strip(const string &str)
+string ansi_strip(const string& str)
 {
     string result = str;
     while(true)
@@ -47,7 +121,7 @@ size_t ansi_strlen(const string &str)
 { return ansi_strip(str).length(); }
 
 // Splits an ANSI-tagged string across multiple lines of text.
-vector<string> ansi_vector_split(const string &str, uint32_t line_length)
+vector<string> ansi_vector_split(const string& str, uint32_t line_length)
 {
     string current_line, last_tag;
     vector<string> result, words = text::manipulation::string_explode(str, " ");
@@ -87,7 +161,7 @@ vector<string> ansi_vector_split(const string &str, uint32_t line_length)
 }
 
 // 'Flattens' ANSI tags, by erasing redundant tags in the string.
-string flatten_tags(const string &str)
+string flatten_tags(const string& str)
 {
     string output, to_check = str, last_tag;
 
