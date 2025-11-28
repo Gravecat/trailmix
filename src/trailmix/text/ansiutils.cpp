@@ -1,6 +1,10 @@
 // text/ansiutils.cpp -- Various utility functions that deal with string manipulation/conversion -- in particular, strings that use a special type of tags I use in my own projects
 // for marking where ANSI colour codes will be inserted into text.
 
+// SPDX-FileType: SOURCE
+// SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
+// SPDX-License-Identifier: MIT
+
 #include "trailmix/text/ansiutils.hpp"
 #include "trailmix/text/manipulation.hpp"
 
