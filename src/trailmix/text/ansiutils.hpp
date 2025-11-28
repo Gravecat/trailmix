@@ -23,5 +23,6 @@ size_t      ansi_strlen(const std::string& str);    // Returns the length of a s
 std::vector<std::string>    ansi_vector_split(const std::string& str, uint32_t line_length);    // Splits an ANSI-tagged string across multiple lines of text.
 std::string flatten_tags(const std::string& str);   // 'Flattens' ANSI tags, by erasing redundant tags in the string.
 std::string generate_bar(BarType type, float num, float num_max, int width);    // Generates a bar of the specified type.
+std::string rainbow_text(const std::string& str, const std::string& colours);   // Makes pretty rainbow text!
 
 }   // namespace trailmix::text::ansi

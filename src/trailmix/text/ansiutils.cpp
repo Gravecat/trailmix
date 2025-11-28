@@ -218,4 +218,22 @@ string generate_bar(BarType type, float num, float num_max, int width)
     return l_cap + result + r_cap;
 }
 
+// Makes pretty rainbow text!
+string rainbow_text(const string& str, const string& colours)
+{
+    string output;
+    int position = 0;
+    int direction = 5;
+
+    for (auto letter : str)
+    {
+        output += colours.substr(position, 5) + string(1, letter);
+        position += direction;
+        if (position >= static_cast<int>(colours.size())) { position -= 10; direction = -5; }
+        else if (position < 0) { position = 5; direction = 5; }
+    }
+
+    return output;
+}
+
 }   // namespace trailmix::text::amsi
