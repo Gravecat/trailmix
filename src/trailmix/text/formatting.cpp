@@ -12,10 +12,30 @@ using std::vector;
 namespace trailmix::text::formatting {
 
 // Capitalizes the first letter of a string.
-std::string capitalize_first_letter(std::string str)
+string capitalize_first_letter(string str)
 {
     if (!str.empty()) str[0] = std::toupper(str[0]);
     return str;
+}
+
+// Centres all the strings in a vector.
+uint32_t centre_strvec(vector<string> &vec)
+{
+    uint32_t longest = 0;
+    for (auto line : vec)
+    {
+        unsigned int len = line.size();
+        if (len > longest) longest = len;
+    }
+    for (unsigned int i = 0; i < vec.size(); i++)
+    {
+        int to_add = longest - vec.at(i).size();
+        if (!to_add) continue;
+        int add_front = to_add / 2;
+        int add_back = to_add - add_front;
+        vec.at(i) = string(add_front, ' ') + vec.at(i) + string(add_back, ' ');
+    }
+    return longest;
 }
 
 // Converts a vector to a comma-separated list.
