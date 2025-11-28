@@ -10,6 +10,7 @@
 
 namespace trailmix::math::manipulation {
 
+double      lerp(double a, double b, double f); // Interpolates between two floating point values.
 uint32_t    mixup(unsigned int num, bool big_mix = false);  // Mixes up an integer a little.
 
 }   // namespace trailmix::math::manipulation
