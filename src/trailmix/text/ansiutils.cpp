@@ -170,6 +170,15 @@ vector<string> ansi_vector_split(const string& str, uint32_t line_length)
     return result;
 }
 
+// Counts all the colour tags in a string.
+size_t count_colour_tags(const string& str)
+{
+    size_t tags = 0;
+    for (size_t i = 0; i < str.size(); i++)
+        if ((str.at(i) == '{') && ((str.size() > i + 1 && str.at(i + 1) == '}') || (str.size() > i + 2 && str.at(i + 2) == '}'))) tags++;
+    return tags;
+}
+
 // 'Flattens' ANSI tags, by erasing redundant tags in the string.
 string flatten_tags(const string& str)
 {

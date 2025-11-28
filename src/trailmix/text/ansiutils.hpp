@@ -21,6 +21,7 @@ std::vector<std::string>    ansi_string_explode(const std::string& str, unsigned
 std::string ansi_strip(const std::string& str);     // Strips all ANSI colour tags like {M} from a string.
 size_t      ansi_strlen(const std::string& str);    // Returns the length of a specified string, not counting the ANSI colour tags like {G} or {kR}.
 std::vector<std::string>    ansi_vector_split(const std::string& str, uint32_t line_length);    // Splits an ANSI-tagged string across multiple lines of text.
+size_t      count_colour_tags(const std::string& str);  // Counts all the colour tags in a string.
 std::string flatten_tags(const std::string& str);   // 'Flattens' ANSI tags, by erasing redundant tags in the string.
 std::string generate_bar(BarType type, float num, float num_max, int width);    // Generates a bar of the specified type.
 std::string rainbow_text(const std::string& str, const std::string& colours);   // Makes pretty rainbow text!
