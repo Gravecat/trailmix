@@ -34,6 +34,7 @@ set(TRAILMIX_CPPS
   src/trailmix/file/fileutils.cpp
   src/trailmix/math/bresenham.cpp
   src/trailmix/math/colour.cpp
+  src/trailmix/math/conversion.cpp
   src/trailmix/math/flags.cpp
   src/trailmix/math/misc.cpp
   src/trailmix/math/poisson.cpp
