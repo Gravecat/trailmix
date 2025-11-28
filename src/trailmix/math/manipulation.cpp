@@ -39,4 +39,15 @@ uint32_t mixup(unsigned int num, bool big_mix)
     return result;
 }
 
+// It's like XOR, but sneakier.
+unsigned char sneaky_xor(unsigned char src, unsigned char mask)
+{
+    if (src == mask || (src ^ mask) == ' ' || (src ^ mask) == '\n' || (src ^ mask) == 1) return src;
+    else if (src == ' ') return 0;
+    else if (src == 0) return ' ';
+    else if (src == '\n') return 1;
+    else if (src == 1) return '\n';
+    else return src ^ mask;
+}
+
 }   // namespace trailmix::math::manipulation
