@@ -58,13 +58,4 @@ double round_to(double num, unsigned int digits)
     return rounded / power;
 }
 
-// Rotates cartesian coordinates by a specified number of radians.
-void rotate_cartesian(float *x, float *y, float radians)
-{
-    const float radius = std::sqrt(((*x) * (*x)) + ((*y) * (*y)));
-    const float angle = std::atan2(*y, *x) + radians;
-    *x = radius * std::cos(angle);
-    *y = radius * std::sin(angle);
-}
-
 }   // namespace trailmix::math::misc
