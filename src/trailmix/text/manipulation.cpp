@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <numeric>
+#include <sstream>
 
 #include "trailmix/text/conversion.hpp"
 #include "trailmix/text/manipulation.hpp"
@@ -106,6 +107,15 @@ string replace_keep_capitalization(const string& input, const string& output)
     else if (first_letter_caps && result[0] >= 'a' && result[0] <= 'z') result[0] -= 32;
 
     return result;
+}
+
+// Repeats a string a number of times.
+std::string str_repeat(const std::string& source, unsigned int repeats)
+{
+    std::ostringstream os;
+    for (unsigned int i = 0; i < repeats; i++)
+        os << source;
+    return os.str();
 }
 
 // Converts a string to lower-case.

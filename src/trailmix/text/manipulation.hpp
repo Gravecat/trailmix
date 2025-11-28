@@ -19,6 +19,7 @@ std::string join_words(std::vector<std::string> vec, const std::string& spacer =
 std::string possessive_string(const std::string& str);  // Makes a string into a possessive noun (e.g. orc = orc's, platypus = platypus')
             // Replaces input with output, maintaining the capitalization of input (e.g. input="Meow" output="cat" result="Cat")
 std::string replace_keep_capitalization(const std::string& input, const std::string& output);
+std::string str_repeat(const std::string& source, unsigned int repeats);    // Repeats a string a number of times.
 std::string str_tolower(std::string str);   // Converts a string to lower-case.
 std::string str_toupper(std::string str);   // Converts a string to upper-case.
 std::vector<std::string>    string_explode(std::string str, const std::string& separator = " ");    // String split/explode function.
