@@ -11,7 +11,7 @@ using std::string;
 namespace trailmix::text::comparison {
 
 // Finds a piece of a string between two other strings.
-string find_between(string source, string before, string after)
+string find_between(const std::string& source, const std::string& before, const std::string& after)
 {
     const size_t bp = source.find(before, 0);
     if (bp == string::npos) return "";
@@ -20,8 +20,11 @@ string find_between(string source, string before, string after)
     return source.substr(bp + before.size(), ap - bp - before.size());
 }
 
+// Simple way to check if a string is in another string.
+bool instr(const string& input, const string& check) { return (input.find(check, 0) != string::npos); }
+
 // Checks if a string is a valid number.
-bool is_number(const string &str)
+bool is_number(const string& str)
 {
     if (!str.size()) return false;
     for (auto ch : str)
