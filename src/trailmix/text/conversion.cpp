@@ -34,6 +34,15 @@ string collapse_vector(vector<string> vec)
     return output.str();
 }
 
+// As above, but for an integer vector>
+string collapse_vector(vector<int> vec)
+{
+    vector<string> converted_vec;
+    for (auto i : vec)
+        converted_vec.push_back(to_string(i));
+    return collapse_vector(converted_vec);
+}
+
 // Converts a float or double to a string.
 string ftos(double num, int precision)
 {

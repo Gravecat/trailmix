@@ -14,6 +14,7 @@ namespace trailmix::text::conversion {
 
 std::string     bool_to_str(bool b);                    // Converts a bool to a string ("true" or "false").
 std::string     collapse_vector(std::vector<std::string> vec);  // Simple function to collapse a string vector into words.
+std::string     collapse_vector(std::vector<int> vec);  // As above, but for an integer vector.
 std::string     ftos(double num, int precision = 1);    // Converts a float or double to a string.
 uint32_t        htoi(const std::string& hex_str);       // Converts a hex string into an integer.
 std::string     intostr_pretty(int num);                // Returns a 'pretty' version of a number in string format, such as "12,345".
