@@ -197,6 +197,15 @@ int32_t stoi(const string& str)
     catch(const std::exception&) { return INT32_MAX; }
 }
 
+// Converts a std::string vector into a int vector.
+vector<int> stoi_vec(const vector<string>& vec)
+{
+    std::vector<int> output;
+    for (auto str : vec)
+        output.push_back(conversion::stoi(str));
+    return output;
+}
+
 // Converts a string to a bool.
 bool str_to_bool(const string& str)
 {
