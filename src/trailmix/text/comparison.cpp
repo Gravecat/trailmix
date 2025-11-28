@@ -10,6 +10,16 @@ using std::string;
 
 namespace trailmix::text::comparison {
 
+// Finds a piece of a string between two other strings.
+string find_between(string source, string before, string after)
+{
+    const size_t bp = source.find(before, 0);
+    if (bp == string::npos) return "";
+    const size_t ap = source.find(after, bp);
+    if (ap == string::npos) return "";
+    return source.substr(bp + before.size(), ap - bp - before.size());
+}
+
 // Checks if a string is a valid number.
 bool is_number(const string &str)
 {
