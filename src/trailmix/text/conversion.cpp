@@ -13,6 +13,7 @@
 
 using std::runtime_error;
 using std::string;
+using std::to_string;
 
 namespace trailmix::text::conversion {
 
@@ -65,6 +66,29 @@ string intostr_pretty(int num)
     result = result.substr(0, result.length() - 1);
 
     return((negative ? "-" : "") + result);
+}
+
+// Unsigned 64-bit version.
+string intostr_pretty_u64(uint64_t num)
+{
+    string str = to_string(num), output;
+
+    // If the number is 3 or less characters long, there's no need for any processing.
+    if (str.length() <= 3) return str;
+
+    do
+    {
+        // Cut the string up, and insert commas where appropriate.
+        output = str.substr(str.length() - 3, 3) + "," + output;
+        str = str.substr(0, str.length() - 3);
+    } while(str.length() > 3);
+
+    // Combine the results.
+    std::string result = str + "," + output;
+
+    // Remove the trailing comma.
+    result = result.substr(0, result.length() - 1);
+    return result;
 }
 
 // Converts an integer into a hex string.
