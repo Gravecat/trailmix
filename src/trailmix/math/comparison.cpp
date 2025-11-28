@@ -18,4 +18,13 @@ float distance_between(const Vector2& start, const Vector2& end)
     return std::sqrt(dx * dx + dy * dy);
 }
 
+// As above, but for a three-dimensional grid.
+float distance_between(const Vector3& start, const Vector3& end)
+{
+    const float dx = float(start.x - end.x);
+    const float dy = float(start.y - end.y);
+    const float dz = float(start.z - end.z);
+	return std::sqrt(dx * dx + dy * dy + dz * dz);
+}
+
 }   // trailmix::math::comparison
