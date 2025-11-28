@@ -17,6 +17,17 @@ namespace fs = std::filesystem;
 
 namespace trailmix::file::utils {
 
+// Counts the number of lines in a file.
+unsigned int count_lines(const string& file)
+{
+    std::ifstream fh(file);
+    unsigned int count = 0;
+    string line;
+    while (std::getline(fh, line)) count++;
+    fh.close();
+    return count;
+}
+
 // Simple CRC32 implementation.
 uint32_t crc32c(uint32_t crc, const unsigned char* buf, size_t len)
 {
