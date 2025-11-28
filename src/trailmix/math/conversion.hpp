@@ -15,5 +15,6 @@ namespace trailmix::math::conversion {
 uint32_t    array_index(const Vector2u& position, const Vector2u& array_size);  // Takes X,Y coordinates, and returns a flat array index for the coordinates.
 double      round_to(double num, unsigned int digits);  // Rounds a float to a specified number of digits.
 double      round_to_two(double num);   // Rounds a float to two decimal places. Quicker than calling round_to(..., 2)
+uint8_t     round_to_uchar(int num);    // Ensures a number fits into an unsigned char (0-255), discarding any values below 0 or above 255.
 
 }   // namespace trailmix::math::conversion

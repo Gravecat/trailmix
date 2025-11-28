@@ -38,4 +38,7 @@ double round_to(double num, unsigned int digits)
 // Rounds a float to two decimal places. Quicker than calling round_to(..., 2)
 float round_to_two(float num) { return ::floorf(num * 100 + 0.5) / 100; }
 
+// Ensures a number fits into an unsigned char (0-255), discarding any values below 0 or above 255.
+uint8_t round_to_uchar(int num) { return std::min(std::max(num, 0), 255); }
+
 }   // namespace trailmix::math::conversion
