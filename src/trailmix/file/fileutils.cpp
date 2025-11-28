@@ -9,7 +9,9 @@
 #include <sys/stat.h>
 
 #include "trailmix/file/fileutils.hpp"
+#include "trailmix/math/random.hpp"
 
+using namespace trailmix::math;
 using std::runtime_error;
 using std::string;
 using std::vector;
@@ -112,6 +114,26 @@ vector<string> files_in_dir(const fs::path& directory, bool recursive)
             push(e);
     }
     return names;
+}
+
+// Returns a random line from a text file.
+string random_line(string &filename, unsigned int lines)
+{
+    if (!lines) lines = count_lines(filename);
+    std::ifstream text_file(filename);
+    const unsigned int choice = random::get<unsigned int>(0, lines - 1);
+    string line;
+    unsigned int count = 0;
+    while(getline(text_file, line))
+    {
+        if (choice == count++)
+    {
+            text_file.close();
+            return line;
+        }
+    }
+    text_file.close();
+    return "";  // error
 }
 
 } // trailmix::file::utils namespace
