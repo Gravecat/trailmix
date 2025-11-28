@@ -18,8 +18,16 @@ string capitalize_first_letter(string str)
     return str;
 }
 
+// Pads a string to be centred to a given width.
+string centre_pad(const string& str, unsigned int width)
+{
+    if (width <= str.size()) return str;
+    unsigned int padding = width - str.size();
+    return string(padding / 2, ' ') + str + string(padding - (padding / 2), ' ');
+}
+
 // Centres all the strings in a vector.
-uint32_t centre_strvec(vector<string> &vec)
+uint32_t centre_strvec(vector<string>& vec)
 {
     uint32_t longest = 0;
     for (auto line : vec)
