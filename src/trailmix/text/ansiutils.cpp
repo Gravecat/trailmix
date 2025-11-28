@@ -5,10 +5,14 @@
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 // SPDX-License-Identifier: MIT
 
+#include <cmath>
+#include <stdexcept>
+
 #include "trailmix/text/ansiutils.hpp"
 #include "trailmix/text/manipulation.hpp"
 
 using namespace trailmix::text::manipulation;
+using std::runtime_error;
 using std::string;
 using std::vector;
 
@@ -189,6 +193,29 @@ string flatten_tags(const string& str)
     }
 
     return output;
+}
+
+// Generates a bar of the specified type.
+string generate_bar(BarType type, float num, float num_max, int width)
+{
+    string result, l_cap, r_cap, bar_col, empty_col;
+    char bar_glyph = '?', empty_glyph = '?';
+    float percentage = num / num_max;
+
+    switch (type)
+    {
+        case BarType::PROGRESS: l_cap = "{W}["; r_cap = "{W}]"; bar_col = "{G}"; empty_col = "{B}"; bar_glyph = '/'; empty_glyph = '.'; break;
+        default: throw runtime_error("Unknown bar type on generate_bar: " + std::to_string(static_cast<int>(type)));
+    }
+    int total_glyphs = width;
+    if (l_cap.size()) total_glyphs -= ansi_strlen(l_cap);
+    if (r_cap.size()) total_glyphs -= ansi_strlen(r_cap);
+    int bar_glyphs = std::round(static_cast<float>(total_glyphs) * percentage);
+
+    if (bar_glyphs) result = bar_col + string(bar_glyphs, bar_glyph) + empty_col + string(total_glyphs - bar_glyphs, empty_glyph);
+    else result = string(total_glyphs, empty_glyph);
+
+    return l_cap + result + r_cap;
 }
 
 }   // namespace trailmix::text::amsi
