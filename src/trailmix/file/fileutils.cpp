@@ -6,6 +6,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <sys/stat.h>
 
 #include "trailmix/file/fileutils.hpp"
 
@@ -48,6 +49,15 @@ uint32_t crc32c(uint32_t crc, const unsigned char* buf, size_t len)
             crc = crc & 1 ? (crc >> 1) ^ 0x82f63b78 : crc >> 1;
     }
     return ~crc;
+}
+
+// Returns the modified date/time of a file, or 0 if the file is not found.
+time_t date_modified(std::string file)
+{
+    struct stat result;
+    if (stat(file.c_str(), &result) == 0)
+        return result.st_mtime;
+    return 0;
 }
 
 // Loads a text file into an std::string.
