@@ -12,5 +12,6 @@ namespace trailmix::text::comparison {
 
 bool    is_number(const std::string& str);  // Checks if a string is a valid number.
 bool    is_vowel(char ch);  // Checks if a character is a vowel.
+unsigned int    word_count(const std::string& str, const std::string& word);    // Returns a count of the amount of times a string is found in a parent string.
 
 }   // namespace trailmix::text::comparison
