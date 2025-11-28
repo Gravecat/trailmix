@@ -21,6 +21,7 @@ uint32_t    centre_strvec(std::vector<std::string>& vec);   // Centres all the s
 std::string comma_list(std::vector<std::string> vec, uint8_t mode = 0);    // Converts a vector to a comma-separated list.
 std::string pad_string(const std::string& str, unsigned int min_len, bool ansi = false);    // Pads a string to a given length.
 std::string pad_string_centre(const std::string& str, unsigned int min_len, bool ansi = false); // As above, but centres the string.
+std::string strip(std::string str, char to_remove); // Strips all instances of to_remove out of a string.
 std::string strip_trailing_newlines(std::string str);   // Strips trailing newlines from a given string.
 
 }   // namespace trailmix::text::formatting

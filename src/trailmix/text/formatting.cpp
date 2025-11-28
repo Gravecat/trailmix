@@ -4,6 +4,7 @@
 // SPDX-FileCopyrightText: Copyright 2025 Raine Simmons <gc@gravecat.com>
 // SPDX-License-Identifier: MIT
 
+#include <algorithm>
 #include <cmath>
 
 #include "trailmix/text/ansiutils.hpp"
@@ -93,6 +94,13 @@ string pad_string_centre(const string& str, unsigned int min_len, bool ansi)
         output = (left_padding ? string(left_padding, ' ') : "") + output + (right_padding ? string(right_padding, ' ') : "");
     }
     return output;
+}
+
+// Strips all instances of to_remove out of a string.
+string strip(string str, char to_remove)
+{
+    str.erase(std::remove(str.begin(), str.end(), to_remove), str.end());
+    return str;
 }
 
 // Strips trailing newlines from a given string.
