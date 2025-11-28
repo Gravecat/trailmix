@@ -17,6 +17,7 @@ bool        find_and_replace(std::string& input, const std::string& to_find, con
 std::string join_words(std::vector<std::string> vec, const std::string& spacer = " ");  // Takes a vector of strings and squashes them into one string.
 std::string possessive_string(const std::string& str);  // Makes a string into a possessive noun (e.g. orc = orc's, platypus = platypus')
 std::string str_tolower(std::string str);   // Converts a string to lower-case.
+std::string str_toupper(std::string str);   // Converts a string to upper-case.
 std::vector<std::string>    string_explode(std::string str, const std::string& separator = " ");    // String split/explode function.
 
 }   // namespace trailmix::text::manipulation
