@@ -11,5 +11,6 @@
 namespace trailmix::text::comparison {
 
 bool    is_number(const std::string& str);  // Checks if a string is a valid number.
+bool    is_vowel(char ch);  // Checks if a character is a vowel.
 
 }   // namespace trailmix::text::comparison
