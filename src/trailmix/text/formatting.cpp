@@ -11,6 +11,13 @@ using std::vector;
 
 namespace trailmix::text::formatting {
 
+// Capitalizes the first letter of a string.
+std::string capitalize_first_letter(std::string str)
+{
+    if (!str.empty()) str[0] = std::toupper(str[0]);
+    return str;
+}
+
 // Converts a vector to a comma-separated list.
 string comma_list(vector<string> vec, uint8_t mode)
 {

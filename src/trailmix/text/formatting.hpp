@@ -15,6 +15,7 @@ namespace trailmix::text::formatting {
 static constexpr uint8_t CL_MODE_USE_AND = 1;   // Use 'and' for the last entry in comma_list().
 static constexpr uint8_t CL_MODE_USE_OR =  2;   // Use 'or' for the last entry in comma_list();
 
+std::string capitalize_first_letter(std::string str);   // Capitalizes the first letter of a string.
 std::string comma_list(std::vector<std::string> vec, uint8_t mode = 0);    // Converts a vector to a comma-separated list.
 std::string strip_trailing_newlines(std::string str);   // Strips trailing newlines from a given string.
 
