@@ -11,6 +11,7 @@
 #include "trailmix/text/conversion.hpp"
 
 using std::string;
+using std::stringstream;
 
 namespace trailmix::text::conversion {
 
@@ -20,7 +21,7 @@ string bool_to_str(bool b) { return (b ? "true" : "false"); }
 // Converts a float or double to a string.
 string ftos(double num, int precision)
 {
-    std::stringstream ss;
+    stringstream ss;
     ss << std::fixed << std::setprecision(precision) << num;
     return ss.str();
 }
@@ -28,17 +29,47 @@ string ftos(double num, int precision)
 // Converts a hex string into an integer.
 uint32_t htoi(const string& hex_str)
 {
-	std::stringstream ss;
+	stringstream ss;
 	ss << std::hex << hex_str;
 	uint32_t result;
 	ss >> result;
 	return result;
 }
 
+// Returns a 'pretty' version of a number in string format, such as "12,345".
+string intostr_pretty(int num)
+{
+    bool negative = false;
+    if (num < 0)
+    {
+        negative = true;
+        num = 0 - num;
+    }
+    string str = std::to_string(num), output;
+
+    // If the number is 3 or less characters long, there's no need for any processing.
+    if (str.length() <= 3) return((negative ? "-" : "") + str);
+
+    do
+    {
+        // Cut the string up, and insert commas where appropriate.
+        output = str.substr(str.length() - 3, 3) + "," + output;
+    str = str.substr(0, str.length() - 3);
+    } while (str.length() > 3);
+
+    // Combine the results.
+    string result = str + "," + output;
+
+    // Remove the trailing comma.
+    result = result.substr(0, result.length() - 1);
+
+    return((negative ? "-" : "") + result);
+}
+
 // Converts an integer into a hex string.
 string itoh(uint32_t num, uint8_t min_len)
 {
-    std::stringstream ss;
+    stringstream ss;
     ss << std::hex << num;
     string hex = ss.str();
     while (min_len && hex.size() < min_len) hex = "0" + hex;
