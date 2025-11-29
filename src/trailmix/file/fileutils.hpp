@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-namespace trailmix::file::utils {
+namespace trailmix::file::fileutils {
 
 uint32_t        crc32c(uint32_t crc, const unsigned char* buf, size_t len); // Simple CRC32 implementation.
 unsigned int    count_lines(const std::string& file);   // Counts the number of lines in a file.
@@ -24,4 +24,4 @@ std::vector<std::string>    files_in_dir(const std::filesystem::path& directory,
 std::string     random_line(std::string& filename, unsigned int lines = 0); // Returns a random line from a text file.
 void            touch(const std::string& file); // Creates an empty placeholder file.
 
-}   // trailmix::file::utils namespace
+}   // trailmix::file::fileutils namespace

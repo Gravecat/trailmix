@@ -18,7 +18,7 @@ using std::string;
 using std::vector;
 namespace fs = std::filesystem;
 
-namespace trailmix::file::utils {
+namespace trailmix::file::fileutils {
 
 // Counts the number of lines in a file.
 unsigned int count_lines(const string& file)
@@ -151,4 +151,4 @@ void touch(const std::string& file)
 	std::fclose(fptr);
 }
 
-} // trailmix::file::utils namespace
+} // trailmix::file::fileutils namespace

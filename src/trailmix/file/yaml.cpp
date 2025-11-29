@@ -7,7 +7,7 @@
 #include "trailmix/file/fileutils.hpp"
 #include "trailmix/file/yaml.hpp"
 
-using namespace trailmix::file::utils;
+using namespace trailmix::file;
 using std::runtime_error;
 using std::string;
 using std::vector;
@@ -93,7 +93,7 @@ std::map<string, string> YAML::keys_vals() const
 // Loads a YAML file into memory and parse it.
 void YAML::load_file(const string& filename, bool allow_backslash)
 {
-    string file_string = file_to_string(filename.c_str());
+    string file_string = fileutils::file_to_string(filename.c_str());
     // If we don't care about using backslash for... whatever rapidYAML does with them, just turn them into double-backslashes so they're treated as a
     // string literal of \ instead of... I don't know, it's probably used for writing hex or octal or some shit.
     if (!allow_backslash)
