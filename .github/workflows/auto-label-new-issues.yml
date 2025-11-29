@@ -1,7 +1,9 @@
-name: Auto-label new issues
+name: Auto-label new issues and PRs
 
 on:
   issues:
+    types: [opened]
+  pull_request:
     types: [opened]
 
 jobs:
@@ -9,8 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+      pull-requests: write
     steps:
-      - name: Add 'new' label
+      - name: Check if author is a repo admin
+        id: admin-check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          LOGIN: ${{ github.event.issue.user.login || github.event.pull_request.user.login }}
+        run: |
+          # Get collaborators and filter for the author
+          ROLE=$(gh api "/repos/${REPO}/collaborators/${LOGIN}/permission" --jq .permission)
+          echo "ROLE=$ROLE" >> $GITHUB_ENV
+
+      - name: Add 'new' label if author is NOT an admin
+        if: env.ROLE != 'admin'
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: new
