@@ -103,7 +103,9 @@ string pad_string_centre(const string& str, unsigned int min_len, bool ansi)
 void process_conditional_tags(string& str, const string& tag, bool active)
 {
     const size_t start = str.find("[" + tag);
+    if (start == string::npos) return;
     const size_t end = str.find("]", start);
+    if (end == string::npos) return;
     if (active)
     {
         const size_t insert_start = start + tag.size() + 2;
