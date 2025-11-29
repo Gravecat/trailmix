@@ -102,17 +102,19 @@ string pad_string_centre(const string& str, unsigned int min_len, bool ansi)
 // whether the bool is true or false.
 void process_conditional_tags(string& str, const string& tag, bool active)
 {
-    const size_t start = str.find("[" + tag);
-    if (start == string::npos) return;
-    const size_t end = str.find("]", start);
-    if (end == string::npos) return;
-    if (active)
+    do
     {
-        const size_t insert_start = start + tag.size() + 2;
-        const string insert = str.substr(insert_start, end - insert_start);
-        str = str.substr(0, start) + insert + str.substr(end + 1);
-    }
-    else str = str.substr(0, start) + str.substr(end + 1);
+        const size_t start = str.find("[" + tag);
+        const size_t end = str.find("]", start);
+        if (start == string::npos || end == string::npos) return;
+        if (active)
+        {
+            const size_t insert_start = start + tag.size() + 2;
+            const string insert = str.substr(insert_start, end - insert_start);
+            str = str.substr(0, start) + insert + str.substr(end + 1);
+        }
+        else str = str.substr(0, start) + str.substr(end + 1);
+    } while(true);
 }
 
 // Right-aligns a percentage string.
