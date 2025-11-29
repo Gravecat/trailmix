@@ -7,7 +7,7 @@
 #include "trailmix/math/random.hpp"
 #include "trailmix/time/timer.hpp"
 
-using namespace trailmix::math;
+using trailmix::math::rnd;
 
 namespace trailmix::time {
 
@@ -29,7 +29,7 @@ bool Timer::expired() const
 void Timer::randomize(unsigned int amount)
 {
     int offset = 1;
-    if (amount > 1) offset = random::get<int>(1, amount);
+    if (amount > 1) offset = rnd::get<int>(1, amount);
     start_time_ -= std::chrono::milliseconds(offset);
 }
 

@@ -10,8 +10,8 @@
 #include "trailmix/math/random.hpp"
 #include "trailmix/math/comparison.hpp"
 
-using namespace trailmix::math::comparison;
 using std::vector;
+using trailmix::math::comparison::distance_between;
 
 namespace trailmix::math {
 
@@ -45,7 +45,7 @@ vector<Vector2> PoissonDiskSampler::generate_points(unsigned int num_points, con
     // Start with a random point if no existing points
     if (points_.empty())
     {
-        Vector2 first_point(random::get(0, width_ - 1), random::get(0, height_ - 1));
+        Vector2 first_point(rnd::get(0, width_ - 1), rnd::get(0, height_ - 1));
         points_.push_back(first_point);
         active_points.push_back(first_point);
         grid_[point_to_grid(first_point) / grid_width_][point_to_grid(first_point) % grid_width_] = 0;
@@ -54,7 +54,7 @@ vector<Vector2> PoissonDiskSampler::generate_points(unsigned int num_points, con
     // Generate remaining points
     while (!active_points.empty() && points_.size() < num_points)
     {
-        Vector2 current_point = active_points[random::get<unsigned int>(0, active_points.size() - 1)];
+        Vector2 current_point = active_points[rnd::get<unsigned int>(0, active_points.size() - 1)];
         bool foundValid = false;
 
         // Try to generate new points around the current point
@@ -71,7 +71,7 @@ vector<Vector2> PoissonDiskSampler::generate_points(unsigned int num_points, con
             }
         }
 
-        if (!foundValid) active_points.erase(active_points.begin() + random::get<unsigned int>(0, active_points.size() - 1));
+        if (!foundValid) active_points.erase(active_points.begin() + rnd::get<unsigned int>(0, active_points.size() - 1));
     }
 
     return points_;
@@ -79,8 +79,8 @@ vector<Vector2> PoissonDiskSampler::generate_points(unsigned int num_points, con
 
 Vector2 PoissonDiskSampler::generate_random_point_around(const Vector2& center)
 {
-    const float radius = min_distance_ * (1.0f + random::get(0.0f, 1.0f));
-    const float angle = random::get(0.0f, 1.0f) * 2.0f * M_PI;
+    const float radius = min_distance_ * (1.0f + rnd::get(0.0f, 1.0f));
+    const float angle = rnd::get(0.0f, 1.0f) * 2.0f * M_PI;
 
     const int new_x = center.x + static_cast<int>(radius * std::cos(angle));
     const int new_y = center.y + static_cast<int>(radius * std::sin(angle));

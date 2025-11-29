@@ -8,10 +8,8 @@
 #include <numeric>
 #include <sstream>
 
-#include "trailmix/text/conversion.hpp"
 #include "trailmix/text/manipulation.hpp"
 
-using namespace trailmix::text::conversion;
 using std::string;
 using std::to_string;
 using std::vector;

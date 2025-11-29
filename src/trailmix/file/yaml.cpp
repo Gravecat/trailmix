@@ -7,7 +7,6 @@
 #include "trailmix/file/fileutils.hpp"
 #include "trailmix/file/yaml.hpp"
 
-using namespace trailmix::file;
 using std::runtime_error;
 using std::string;
 using std::vector;

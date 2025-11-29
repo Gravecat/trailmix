@@ -34,7 +34,7 @@ uint32_t mixup(unsigned int num, bool big_mix)
 {
     int64_t variance = num / (big_mix ? 2 : 10);
     if (variance <= 0) variance = 1;
-    uint32_t result = static_cast<uint32_t>(num) + random::get<int>(0, variance * 2) - variance;
+    uint32_t result = static_cast<uint32_t>(num) + rnd::get<int>(0, variance * 2) - variance;
     if (result < 1) result = 1;
     return result;
 }

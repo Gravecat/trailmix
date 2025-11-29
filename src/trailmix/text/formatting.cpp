@@ -11,10 +11,10 @@
 #include "trailmix/text/ansiutils.hpp"
 #include "trailmix/text/formatting.hpp"
 
-using namespace trailmix::text::ansi;
 using std::string;
 using std::to_string;
 using std::vector;
+using trailmix::text::ansi::ansi_strlen;
 
 namespace trailmix::text::formatting {
 

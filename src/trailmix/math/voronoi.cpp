@@ -13,8 +13,8 @@
 #include "trailmix/math/comparison.hpp"
 #include "trailmix/math/voronoi.hpp"
 
-using namespace trailmix::math::comparison;
 using std::vector;
+using trailmix::math::comparison::distance_between;
 
 namespace trailmix::math {
 

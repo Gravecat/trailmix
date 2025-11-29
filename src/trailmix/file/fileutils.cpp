@@ -12,10 +12,10 @@
 #include "trailmix/file/fileutils.hpp"
 #include "trailmix/math/random.hpp"
 
-using namespace trailmix::math;
 using std::runtime_error;
 using std::string;
 using std::vector;
+using trailmix::math::rnd;
 namespace fs = std::filesystem;
 
 namespace trailmix::file::fileutils {
@@ -122,7 +122,7 @@ string random_line(string &filename, unsigned int lines)
 {
     if (!lines) lines = count_lines(filename);
     std::ifstream text_file(filename);
-    const unsigned int choice = random::get<unsigned int>(0, lines - 1);
+    const unsigned int choice = rnd::get<unsigned int>(0, lines - 1);
     string line;
     unsigned int count = 0;
     while(getline(text_file, line))

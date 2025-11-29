@@ -12,11 +12,11 @@
 #include "trailmix/text/comparison.hpp"
 #include "trailmix/text/manipulation.hpp"
 
-using namespace trailmix::text::comparison;
-using namespace trailmix::text::manipulation;
 using std::runtime_error;
 using std::string;
 using std::vector;
+using trailmix::text::comparison::word_count;
+using trailmix::text::manipulation::string_explode;
 
 namespace trailmix::text::ansi {
 

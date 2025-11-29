@@ -9,8 +9,8 @@
 #include "trailmix/math/scientific-notation.hpp"
 #include "trailmix/text/conversion.hpp"
 
-using namespace trailmix::text::conversion;
 using std::string;
+using trailmix::text::conversion::ftos;
 
 namespace trailmix::math {
 

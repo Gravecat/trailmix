@@ -9,9 +9,9 @@
 #include "trailmix/file/filewriter.hpp"
 #include "trailmix/sys/binpath.hpp"
 
-using namespace trailmix::sys;
 using std::string;
 using std::vector;
+using trailmix::sys::BinPath;
 namespace fs = std::filesystem;
 
 namespace trailmix::file {
