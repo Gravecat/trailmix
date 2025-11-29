@@ -98,6 +98,21 @@ string pad_string_centre(const string& str, unsigned int min_len, bool ansi)
     return output;
 }
 
+// Allows adding conditional tags to a string in the form of [tag_name:conditional text here] and either including or removing the conditional text depending on
+// whether the bool is true or false.
+void process_conditional_tags(string& str, const string& tag, bool active)
+{
+    const size_t start = str.find("[" + tag);
+    const size_t end = str.find("]", start);
+    if (active)
+    {
+        const size_t insert_start = start + tag.size() + 2;
+        const string insert = str.substr(insert_start, end - insert_start);
+        str = str.substr(0, start) + insert + str.substr(end + 1);
+    }
+    else str = str.substr(0, start) + str.substr(end + 1);
+}
+
 // Right-aligns a percentage string.
 string right_align_percentage(uint8_t percent)
 {
